@@ -3,14 +3,13 @@
 
 #include "Duck.h"
 #include "Fly/FlyWithWings.h"
-#include "Dance/DanceWaltz.h"
 #include "Quack/QuackBehavior.h"
 
 class MallardDuck : public Duck
 {
 public:
 	MallardDuck()
-		: Duck(std::make_unique<FlyWithWings>(), std::make_unique<QuackBehavior>(), std::make_unique<DanceWaltz>())
+		: Duck(std::make_unique<FlyWithWings>(), std::make_unique<QuackBehavior>())
 	{
 	}
 
