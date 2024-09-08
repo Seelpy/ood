@@ -6,53 +6,25 @@
 #include "./../lib/Duck/RubberDuck.h"
 #include <sstream>
 
-const std::string danceNoWayOutput;
-const std::string danceMinuetOutput = "I'm dance minuet\n";
-const std::string danceWaltzOutput = "I'm dance waltz!!\n";
-
-TEST (dance, dance_with_decoy_duck)
+void assertFlyWithCount(Duck& duck, std::stringstream& buffer, int number)
 {
-    DecoyDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceNoWayOutput);
+    duck.Fly();
+    ASSERT_EQ(buffer.str(), "Flight number: " + std::to_string(number) + "\nI'm flying with wings!!\n");
+    buffer.str("");
 }
 
-TEST (dance, dance_with_mallard_duck)
+TEST (fly, check_nmber_of_flight)
 {
+    std::stringstream buffer;
+    std::cout.rdbuf(buffer.rdbuf());
+
     MallardDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceWaltzOutput);
-}
-
-TEST (dance, dance_with_model_duck)
-{
-    ModelDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceNoWayOutput);
-}
-
-TEST (dance, dance_with_readhead_duck)
-{
-    RedheadDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceMinuetOutput);
-}
-
-TEST (dance, dance_with_rubber_duck)
-{
-    RubberDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceNoWayOutput);
+    assertFlyWithCount(duck, buffer, 1);
+    assertFlyWithCount(duck, buffer, 2);
+    assertFlyWithCount(duck, buffer, 3);
+    duck.SetFlyBehavior(std::make_unique<FlyWithWings>());
+    assertFlyWithCount(duck, buffer, 1);
+    assertFlyWithCount(duck, buffer, 2);
 }
 
 GTEST_API_ int main(int argc, char **argv)

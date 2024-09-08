@@ -10,49 +10,42 @@ const std::string danceNoWayOutput;
 const std::string danceMinuetOutput = "I'm dance minuet\n";
 const std::string danceWaltzOutput = "I'm dance waltz!!\n";
 
-TEST (dance, dance_with_decoy_duck)
+void assertDance(Duck &duck, const std::string& danceOutput)
 {
-    DecoyDuck duck;
     std::stringstream buffer;
     std::cout.rdbuf(buffer.rdbuf());
     duck.Dance();
-    ASSERT_EQ(buffer.str(), danceNoWayOutput);
+    ASSERT_EQ(buffer.str(), danceOutput);
+}
+
+TEST (dance, dance_with_decoy_duck)
+{
+    DecoyDuck duck;
+    assertDance(duck, danceNoWayOutput);
 }
 
 TEST (dance, dance_with_mallard_duck)
 {
     MallardDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceWaltzOutput);
+    assertDance(duck, danceWaltzOutput);
 }
 
 TEST (dance, dance_with_model_duck)
 {
     ModelDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceNoWayOutput);
+    assertDance(duck, danceNoWayOutput);
 }
 
 TEST (dance, dance_with_readhead_duck)
 {
     RedheadDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceMinuetOutput);
+    assertDance(duck, danceMinuetOutput);
 }
 
 TEST (dance, dance_with_rubber_duck)
 {
     RubberDuck duck;
-    std::stringstream buffer;
-    std::cout.rdbuf(buffer.rdbuf());
-    duck.Dance();
-    ASSERT_EQ(buffer.str(), danceNoWayOutput);
+    assertDance(duck, danceNoWayOutput);
 }
 
 GTEST_API_ int main(int argc, char **argv)
