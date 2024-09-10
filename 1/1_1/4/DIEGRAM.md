@@ -12,14 +12,14 @@ DrawEllipse(double cx, double cy, double rx, double ry)
 DrawText(double left, double top, double fontSize, const string& text)
 }
 
-class ShapeService{
+class Picture{
 +AddShape(Shape shape)
 +ChangeShapeStrategy(string id, IShapeStrategy strategy)
 +RemoveShape(string id)
 +MoveShape(string id, double dx, double dy)
 +MovePicture(double dx, double dy)
 +WriteShapesInfo(ostream out)
-+DrawShape(ICanvas canvas, string id)
++DrawShape(string id)
 }
 
 class Shape{
@@ -77,9 +77,9 @@ IShapeStrategy <|.. ShapeStrategy
 
 Shape *-- IShapeStrategy
 
-ShapeService o-- Shape
+Picture o-- Shape
 
-ShapeCommandHandler o--ShapeService
+ShapeCommandHandler o--Picture
 
 ShapeStrategy --> ICanvas
-ShapeService --> ICanvas
+Picture *-- ICanvas
