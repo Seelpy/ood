@@ -12,7 +12,7 @@ class DecoyDuck : public Duck
 {
 public:
 	DecoyDuck()
-		: Duck(std::make_unique<FlyStrategy>(NewFlyNoWay()), std::make_unique<QuackStrategy>(NewMuteQuack()), std::make_unique<QuackStrategy>(NewDanceNoWay()))
+		: Duck(NewFlyNoWay(), NewMuteQuack(), NewDanceNoWay())
 	{
 	}
 

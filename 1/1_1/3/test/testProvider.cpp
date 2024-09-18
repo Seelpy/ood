@@ -63,7 +63,7 @@ TEST (fly, check_nmber_of_flight)
     assertFlyWithCount(duck, 1);
     assertFlyWithCount(duck, 2);
     assertFlyWithCount(duck, 3);
-    duck.SetFlyBehavior(std::make_unique<FlyStrategy>(NewFlyWithWings()));
+    duck.SetFlyBehavior(NewFlyWithWings());
     assertFlyWithCount(duck, 1);
     assertFlyWithCount(duck, 2);
 }

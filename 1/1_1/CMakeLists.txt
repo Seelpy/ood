@@ -35,6 +35,7 @@ set(SOURCE_FILES_1
         1/lib/Duck/Dance/DanceMinuet.h
         1/lib/Duck/Dance/DanceWaltz.h
         1/lib/Duck/Dance/IDanceBehavior.h
+        4/lib/Picture/ShapeStrategy/Type.cpp
 )
 
 set(TEST_SOURCE_FILES_1
@@ -175,35 +176,72 @@ add_test(NAME 1_3_test COMMAND 1_3_test)
 set(SOURCE_FILES_4
         4/cmd/main.cpp
         4/lib/Canvas/ICanvas.h
-        4/lib/Canvas/Shape.h
-        4/lib/Canvas/ShapeStrategy/IShapeStrategy.h
-        4/lib/Canvas/ShapeStrategy/CircleStrategy.h
-        4/lib/Canvas/ShapeStrategy/RectangleStrategy.h
-        4/lib/Canvas/ShapeStrategy/TriangleStrategy.h
-        4/lib/Canvas/ShapeStrategy/LineStrategy.h
-        4/lib/Canvas/ShapeStrategy/TextStrategy.h
-        4/lib/Canvas/Picture.h
-        4/lib/Handler/ShapeCommandHanler.h
+        4/lib/Picture/Shape.h
+        4/lib/Picture/ShapeStrategy/Type.h
+        4/lib/Picture/ShapeStrategy/Type.cpp
+        4/lib/Picture/ShapeStrategy/IShapeStrategy.h
+        4/lib/Picture/ShapeStrategy/CircleStrategy.h
+        4/lib/Picture/ShapeStrategy/RectangleStrategy.h
+        4/lib/Picture/ShapeStrategy/TriangleStrategy.h
+        4/lib/Picture/ShapeStrategy/LineStrategy.h
+        4/lib/Picture/ShapeStrategy/TextStrategy.h
+        4/lib/Picture/Picture.h
+        4/lib/Handler/ShapeCommandHandler.h
         4/lib/Canvas/PNGCanvas/PNGCanvas.cpp
         4/lib/Canvas/PNGCanvas/PNGCanvas.cpp
         4/lib/Canvas/PNGCanvas/PNGCanvas.cpp
+        4/lib/Picture/Picture.cpp
+        4/lib/Handler/CommandsHandlers/ParseFunc.h
+        4/lib/Handler/CommandsHandlers/CommandType.h
+        4/lib/Handler/CommandsHandlers/MoveShapeHandler.h
+        4/lib/Handler/CommandsHandlers/MovePictureHandler.h
+        4/lib/Handler/CommandsHandlers/DeleteShapeHandler.h
+        4/lib/Handler/CommandsHandlers/ListShapesHandler.h
+        4/lib/Handler/CommandsHandlers/ChangeColorHandler.h
+        4/lib/Handler/CommandsHandlers/ChangeShapeHandler.h
+        4/lib/Handler/CommandsHandlers/AddShapeHandler.h
+        4/lib/Handler/CommandsHandlers/DrawShapeHandler.h
+        4/lib/Handler/CommandsHandlers/DrawPictureHandler.h
+        4/lib/Handler/CommandsHandlers/CloneShapeHandler.h
+        4/lib/Handler/CommandsHandlers/CloneShapeHandler.h
+        4/lib/Canvas/PNGCanvas/PNGCanvas.h
+        4/lib/Canvas/PNGCanvas/stb_image_write.h
+        4/lib/Canvas/PNGCanvas/stb_truetype.h
 )
 
 set(TEST_SOURCE_FILES_4
         4/test/testProvider.cpp
         4/lib/Canvas/ICanvas.h
-        4/lib/Canvas/Shape.h
-        4/lib/Canvas/ShapeStrategy/IShapeStrategy.h
-        4/lib/Canvas/ShapeStrategy/CircleStrategy.h
-        4/lib/Canvas/ShapeStrategy/RectangleStrategy.h
-        4/lib/Canvas/ShapeStrategy/TriangleStrategy.h
-        4/lib/Canvas/ShapeStrategy/LineStrategy.h
-        4/lib/Canvas/ShapeStrategy/TextStrategy.h
-        4/lib/Canvas/Picture.h
-        4/lib/Handler/ShapeCommandHanler.h
+        4/lib/Picture/Shape.h
+        4/lib/Picture/ShapeStrategy/Type.h
+        4/lib/Picture/ShapeStrategy/Type.cpp
+        4/lib/Picture/ShapeStrategy/IShapeStrategy.h
+        4/lib/Picture/ShapeStrategy/CircleStrategy.h
+        4/lib/Picture/ShapeStrategy/RectangleStrategy.h
+        4/lib/Picture/ShapeStrategy/TriangleStrategy.h
+        4/lib/Picture/ShapeStrategy/LineStrategy.h
+        4/lib/Picture/ShapeStrategy/TextStrategy.h
+        4/lib/Picture/Picture.h
+        4/lib/Handler/ShapeCommandHandler.h
         4/lib/Canvas/PNGCanvas/PNGCanvas.cpp
         4/lib/Canvas/PNGCanvas/PNGCanvas.cpp
         4/lib/Canvas/PNGCanvas/PNGCanvas.cpp
+        4/lib/Picture/Picture.cpp
+        4/lib/Handler/CommandsHandlers/ParseFunc.h
+        4/lib/Handler/CommandsHandlers/CommandType.h
+        4/lib/Handler/CommandsHandlers/MoveShapeHandler.h
+        4/lib/Handler/CommandsHandlers/MovePictureHandler.h
+        4/lib/Handler/CommandsHandlers/DeleteShapeHandler.h
+        4/lib/Handler/CommandsHandlers/ListShapesHandler.h
+        4/lib/Handler/CommandsHandlers/ChangeColorHandler.h
+        4/lib/Handler/CommandsHandlers/ChangeShapeHandler.h
+        4/lib/Handler/CommandsHandlers/AddShapeHandler.h
+        4/lib/Handler/CommandsHandlers/DrawShapeHandler.h
+        4/lib/Handler/CommandsHandlers/DrawPictureHandler.h
+        4/lib/Handler/CommandsHandlers/CloneShapeHandler.h
+        4/lib/Canvas/PNGCanvas/PNGCanvas.h
+        4/lib/Canvas/PNGCanvas/stb_image_write.h
+        4/lib/Canvas/PNGCanvas/stb_truetype.h
 )
 
 add_executable(1_4 ${SOURCE_FILES_4})

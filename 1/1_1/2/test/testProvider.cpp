@@ -6,7 +6,7 @@
 #include "./../lib/Duck/RubberDuck.h"
 #include <sstream>
 
-void assertFlyWithCount(Duck& duck, std::stringstream& buffer, int number)
+void assertFlyWithCount(Duck &duck, std::stringstream &buffer, int number)
 {
     duck.Fly();
     ASSERT_EQ(buffer.str(), "Flight number: " + std::to_string(number) + "\nI'm flying with wings!!\n");

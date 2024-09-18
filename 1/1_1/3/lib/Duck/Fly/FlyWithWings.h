@@ -7,8 +7,8 @@
 
 FlyStrategy NewFlyWithWings()
 {
-    uint countOfFlights;
-    return [&countOfFlights]() {
+    uint countOfFlights = 0;
+    return [countOfFlights]() mutable {
         std::cout << "Flight number: " << countOfFlights + 1 << std::endl;
         std::cout << "I'm flying with wings!!" << std::endl;
 

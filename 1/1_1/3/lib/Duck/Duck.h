@@ -13,18 +13,19 @@
 class Duck
 {
 public:
-	Duck(std::unique_ptr<FlyStrategy>&& flyBehavior,
-		std::unique_ptr<QuackStrategy>&& quackBehavior,
-		std::unique_ptr<DanceStrategy>&& danceBehavior)
+	Duck(FlyStrategy flyBehavior,
+		QuackStrategy quackBehavior,
+		DanceStrategy danceBehavior)
 		: m_quackBehavior(std::move(quackBehavior)), m_danceBehavior(std::move(danceBehavior))
 	{
 		assert(m_quackBehavior);
-		SetFlyBehavior(std::move(flyBehavior));
+		assert(m_danceBehavior);
+		SetFlyBehavior(flyBehavior);
 	}
 
 	void Quack() const
 	{
-        (*m_quackBehavior)();
+        m_quackBehavior();
 	}
 
 	void Swim()
@@ -34,15 +35,15 @@ public:
 
 	void Fly()
 	{
-        (*m_flyBehavior)();
+        m_flyBehavior();
 	}
 
 	virtual void Dance()
 	{
-        (*m_danceBehavior)();
+        m_danceBehavior();
 	}
 
-	void SetFlyBehavior(std::unique_ptr<FlyStrategy>&& flyBehavior)
+	void SetFlyBehavior(FlyStrategy flyBehavior)
 	{
 		assert(flyBehavior);
 		m_flyBehavior = std::move(flyBehavior);
@@ -52,9 +53,9 @@ public:
 	virtual ~Duck() = default;
 
 private:
-	std::unique_ptr<FlyStrategy> m_flyBehavior;
-	std::unique_ptr<QuackStrategy> m_quackBehavior;
-	std::unique_ptr<DanceStrategy> m_danceBehavior;
+	FlyStrategy m_flyBehavior;
+	QuackStrategy m_quackBehavior;
+	DanceStrategy m_danceBehavior;
 };
 
 #endif

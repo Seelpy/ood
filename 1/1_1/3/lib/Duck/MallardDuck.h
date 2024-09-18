@@ -6,11 +6,13 @@
 #include "Quack/Quack.h"
 #include "Dance/DanceWaltz.h"
 
+// TOOD: сделать так чтобы не компилировался
+
 class MallardDuck : public Duck
 {
 public:
 	MallardDuck()
-		: Duck(std::make_unique<FlyStrategy>(NewFlyWithWings()), std::make_unique<QuackStrategy>(NewQuack()), std::make_unique<DanceStrategy>(NewDanceWaltz()))
+		: Duck(NewFlyWithWings, NewQuack(), NewDanceWaltz())
 	{
 	}
 
