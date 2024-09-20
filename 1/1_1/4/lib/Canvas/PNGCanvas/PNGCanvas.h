@@ -23,36 +23,35 @@ struct Color {
     uint8_t r, g, b, a;
 };
 
-std::string ColorToString(const Color& color);
 Color StringToColor(const std::string& colorString);
 
 class PNGCanvas : public ICanvas
 {
 public:
-    PNGCanvas(int w, int h) : width(w), height(h), currentColor({255, 255, 255, 255}), currentX(0), currentY(0)
+    PNGCanvas(int w, int h, const std::string& outFileName) : m_w(w), m_h(h), m_fileName(std::move(outFileName)), m_color({255, 255, 255, 255}), m_x(0), m_y(0)
     {
-        pixels.resize(width * height * 4, 255); // Белый фон
+        m_pixels.resize(m_w * m_h * 4, 255); // Белый фон
     }
 
     ~PNGCanvas() override
     {
-        SaveToFile("output.png");
+        SaveToFile(m_fileName);
     }
 
     void SetColor(const std::string& color) override
     {
-        currentColor = StringToColor(color);
+        m_color = StringToColor(color);
     }
 
     void MoveTo(double x, double y) override
     {
-        currentX = x;
-        currentY = y;
+        m_x = x;
+        m_y = y;
     }
 
     void LineTo(double x, double y) override
     {
-        DrawLine(currentX, currentY, x, y);
+        DrawLine(m_x, m_y, x, y);
         MoveTo(x, y);
     }
 
@@ -79,23 +78,21 @@ public:
     void SaveToFile(const std::string& filename);
 
 private:
-    int width, height;
-    Color currentColor{};
-    double currentX, currentY;
-    std::vector<uint8_t> pixels;
-
-    const int FONT_WIDTH = 8;
-    const int FONT_HEIGHT = 8;
+    int m_w, m_h;
+    Color m_color{};
+    double m_x, m_y;
+    std::vector<uint8_t> m_pixels;
+    std::string m_fileName;
 
     void PutPixel(int x, int y)
     {
-        if (x >= 0 && x < width && y >= 0 && y < height)
+        if (x >= 0 && x < m_w && y >= 0 && y < m_h)
         {
-            int index = 4 * (y * width + x);
-            pixels[index] = currentColor.r;
-            pixels[index + 1] = currentColor.g;
-            pixels[index + 2] = currentColor.b;
-            pixels[index + 3] = currentColor.a;
+            int index = 4 * (y * m_w + x);
+            m_pixels[index] = m_color.r;
+            m_pixels[index + 1] = m_color.g;
+            m_pixels[index + 2] = m_color.b;
+            m_pixels[index + 3] = m_color.a;
         }
     }
 

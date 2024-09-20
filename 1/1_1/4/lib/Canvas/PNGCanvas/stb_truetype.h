@@ -174,18 +174,18 @@
 //
 //      Font Size in Pixels or Points
 //         The preferred interface for specifying font sizes in stb_truetype
-//         is to specify how tall the font's vertical extent should be in pixels.
+//         is to specify how tall the font's vertical extent should be in m_pixels.
 //         If that sounds good enough, skip the next paragraph.
 //
 //         Most font APIs instead use "points", which are a common typographic
 //         measurement for describing font size, defined as 72 points per inch.
 //         stb_truetype provides a point API for compatibility. However, true
 //         "per inch" conventions don't make much sense on computer displays
-//         since different monitors have different number of pixels per
+//         since different monitors have different number of m_pixels per
 //         inch. For example, Windows traditionally uses a convention that
-//         there are 96 pixels per inch, thus making 'inch' measurements have
+//         there are 96 m_pixels per inch, thus making 'inch' measurements have
 //         nothing to do with inches, and thus effectively defining a point to
-//         be 1.333 pixels. Additionally, the TrueType font data provides
+//         be 1.333 m_pixels. Additionally, the TrueType font data provides
 //         an explicit scale factor to scale a given font's glyphs to points,
 //         but the author has observed that this scale factor is often wrong
 //         for non-commercial fonts, thus making fonts scaled in points
@@ -194,14 +194,14 @@
 // DETAILED USAGE:
 //
 //  Scale:
-//    Select how high you want the font to be, in points or pixels.
+//    Select how high you want the font to be, in points or m_pixels.
 //    Call ScaleForPixelHeight or ScaleForMappingEmToPixels to compute
 //    a scale factor SF that will be used by all other functions.
 //
 //  Baseline:
 //    You need to select a y-coordinate that is the baseline of where
 //    your text will appear. Call GetFontBoundingBox to get the baseline-relative
-//    bounding box for all characters. SF*-y0 will be the distance in pixels
+//    bounding box for all characters. SF*-y0 will be the distance in m_pixels
 //    that the worst-case character could extend above the baseline, so if
 //    you want the top edge of characters to appear at the top of the
 //    screen where y=0, then you would set the baseline to SF*-y0.
@@ -298,7 +298,7 @@ void my_stbtt_initfont(void)
 
 void my_stbtt_print(float x, float y, char *text)
 {
-   // assume orthographic projection with units = screen pixels, origin at top left
+   // assume orthographic projection with units = screen m_pixels, origin at top left
    glEnable(GL_BLEND);
    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
    glEnable(GL_TEXTURE_2D);
@@ -531,7 +531,7 @@ typedef struct
 } stbtt_bakedchar;
 
 STBTT_DEF int stbtt_BakeFontBitmap(const unsigned char *data, int offset,  // font location (use offset=0 for plain .ttf)
-                                float pixel_height,                     // height of font in pixels
+                                float pixel_height,                     // height of font in m_pixels
                                 unsigned char *pixels, int pw, int ph,  // bitmap to be filled in
                                 int first_char, int num_chars,          // characters to bake
                                 stbtt_bakedchar *chardata);             // you allocate this, it's num_chars long
@@ -613,8 +613,8 @@ STBTT_DEF int  stbtt_PackFontRange(stbtt_pack_context *spc, const unsigned char 
 // as computed by stbtt_ScaleForPixelHeight. To use a point size as computed
 // by stbtt_ScaleForMappingEmToPixels, wrap the point size in STBTT_POINT_SIZE()
 // and pass that result as 'font_size':
-//       ...,                  20 , ... // font max minus min y is 20 pixels tall
-//       ..., STBTT_POINT_SIZE(20), ... // 'M' is 20 pixels tall
+//       ...,                  20 , ... // font max minus min y is 20 m_pixels tall
+//       ..., STBTT_POINT_SIZE(20), ... // 'M' is 20 m_pixels tall
 
 typedef struct
 {
@@ -639,7 +639,7 @@ STBTT_DEF void stbtt_PackSetOversampling(stbtt_pack_context *spc, unsigned int h
 // This function sets the amount of oversampling for all following calls to
 // stbtt_PackFontRange(s) or stbtt_PackFontRangesGatherRects for a given
 // pack context. The default (no oversampling) is achieved by h_oversample=1
-// and v_oversample=1. The total number of pixels required is
+// and v_oversample=1. The total number of m_pixels required is
 // h_oversample*v_oversample larger than the default; for example, 2x2
 // oversampling requires 4x the storage of 1x1. For best results, render
 // oversampled textures with bilinear filtering. Look at the readme in
@@ -756,16 +756,16 @@ STBTT_DEF int stbtt_FindGlyphIndex(const stbtt_fontinfo *info, int unicode_codep
 //
 
 STBTT_DEF float stbtt_ScaleForPixelHeight(const stbtt_fontinfo *info, float pixels);
-// computes a scale factor to produce a font whose "height" is 'pixels' tall.
+// computes a scale factor to produce a font whose "height" is 'm_pixels' tall.
 // Height is measured as the distance from the highest ascender to the lowest
 // descender; in other words, it's equivalent to calling stbtt_GetFontVMetrics
 // and computing:
-//       scale = pixels / (ascent - descent)
+//       scale = m_pixels / (ascent - descent)
 // so if you prefer to measure height by the ascent only, use a similar calculation.
 
 STBTT_DEF float stbtt_ScaleForMappingEmToPixels(const stbtt_fontinfo *info, float pixels);
 // computes a scale factor to produce a font whose EM size is mapped to
-// 'pixels' tall. This is probably what traditional APIs compute, but
+// 'm_pixels' tall. This is probably what traditional APIs compute, but
 // I'm not positive.
 
 STBTT_DEF void stbtt_GetFontVMetrics(const stbtt_fontinfo *info, int *ascent, int *descent, int *lineGap);
@@ -929,7 +929,7 @@ typedef struct
 
 // rasterize a shape with quadratic beziers into a bitmap
 STBTT_DEF void stbtt_Rasterize(stbtt__bitmap *result,        // 1-channel bitmap to draw into
-                               float flatness_in_pixels,     // allowable error of curve in pixels
+                               float flatness_in_pixels,     // allowable error of curve in m_pixels
                                stbtt_vertex *vertices,       // array of vertices defining shape
                                int num_verts,                // number of vertices in above array
                                float scale_x, float scale_y, // scale applied to input vertices
@@ -953,7 +953,7 @@ STBTT_DEF unsigned char * stbtt_GetCodepointSDF(const stbtt_fontinfo *info, floa
 //        info              --  the font
 //        scale             --  controls the size of the resulting SDF bitmap, same as it would be creating a regular bitmap
 //        glyph/codepoint   --  the character to generate the SDF for
-//        padding           --  extra "pixels" around the character which are filled with the distance to the character (not 0),
+//        padding           --  extra "m_pixels" around the character which are filled with the distance to the character (not 0),
 //                                 which allows effects like bit outlines
 //        onedge_value      --  value 0-255 to test the SDF against to reconstruct the character (i.e. the isocontour of the character)
 //        pixel_dist_scale  --  what value the SDF should increase by when moving one SDF "pixel" away from the edge (on the 0..255 scale)
@@ -972,16 +972,16 @@ STBTT_DEF unsigned char * stbtt_GetCodepointSDF(const stbtt_fontinfo *info, floa
 //      onedge_value = 180
 //      pixel_dist_scale = 180/5.0 = 36.0
 //
-//      This will create an SDF bitmap in which the character is about 22 pixels
-//      high but the whole bitmap is about 22+5+5=32 pixels high. To produce a filled
+//      This will create an SDF bitmap in which the character is about 22 m_pixels
+//      high but the whole bitmap is about 22+5+5=32 m_pixels high. To produce a filled
 //      shape, sample the SDF at each pixel and fill the pixel if the SDF value
 //      is greater than or equal to 180/255. (You'll actually want to antialias,
 //      which is beyond the scope of this example.) Additionally, you can compute
 //      offset outlines (e.g. to stroke the character border inside & outside,
 //      or only outside). For example, to fill outside the character up to 3 SDF
-//      pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
-//      choice of variables maps a range from 5 pixels outside the shape to
-//      2 pixels inside the shape to 0..255; this is intended primarily for apply
+//      m_pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
+//      choice of variables maps a range from 5 m_pixels outside the shape to
+//      2 m_pixels inside the shape to 0..255; this is intended primarily for apply
 //      outside effects only (the interior range is needed to allow proper
 //      antialiasing of the font at *smaller* sizes)
 //
@@ -2728,7 +2728,7 @@ STBTT_DEF void stbtt_GetGlyphBitmapBoxSubpixel(const stbtt_fontinfo *font, int g
       if (ix1) *ix1 = 0;
       if (iy1) *iy1 = 0;
    } else {
-      // move to integral bboxes (treating pixels as little squares, what pixels get touched)?
+      // move to integral bboxes (treating m_pixels as little squares, what m_pixels get touched)?
       if (ix0) *ix0 = STBTT_ifloor( x0 * scale_x + shift_x);
       if (iy0) *iy0 = STBTT_ifloor(-y1 * scale_y + shift_y);
       if (ix1) *ix1 = STBTT_iceil ( x1 * scale_x + shift_x);
@@ -2910,7 +2910,7 @@ static void stbtt__fill_active_edges(unsigned char *scanline, int len, stbtt__ac
                   else
                      j = len; // clip
 
-                  for (++i; i < j; ++i) // fill pixels between x0 and x1
+                  for (++i; i < j; ++i) // fill m_pixels between x0 and x1
                      scanline[i] = scanline[i] + (stbtt_uint8) max_weight;
                }
             }
@@ -3011,7 +3011,7 @@ static void stbtt__rasterize_sorted_edges(stbtt__bitmap *result, stbtt__edge *e,
 
          ++y;
       }
-      STBTT_memcpy(result->pixels + j * result->stride, scanline, result->w);
+      STBTT_memcpy(result->m_pixels + j * result->stride, scanline, result->w);
       ++j;
    }
 
@@ -3140,7 +3140,7 @@ static void stbtt__fill_active_edges_new(float *scanline, float *scanline_fill, 
             } else {
                int x,x1,x2;
                float y_crossing, y_final, step, sign, area;
-               // covers 2+ pixels
+               // covers 2+ m_pixels
                if (x_top > x_bottom) {
                   // flip scanline vertically; signed area is the same
                   float t;
@@ -3220,7 +3220,7 @@ static void stbtt__fill_active_edges_new(float *scanline, float *scanline_fill, 
                STBTT_assert(STBTT_fabs(area) <= 1.01f); // accumulated error from area += step unless we round step down
                STBTT_assert(sy1 > y_final-0.01f);
 
-               // area covered in the last pixel is the rectangle from all the pixels to the left,
+               // area covered in the last pixel is the rectangle from all the m_pixels to the left,
                // plus the trapezoid filled by the line segment in this pixel all the way to the right edge
                scanline[x2] += area + sign * stbtt__position_trapezoid_area(sy1-y_final, (float) x2, x2+1.0f, x_bottom, x2+1.0f);
 
@@ -3811,7 +3811,7 @@ STBTT_DEF void stbtt_MakeCodepointBitmap(const stbtt_fontinfo *info, unsigned ch
 // This is SUPER-CRAPPY packing to keep source code small
 
 static int stbtt_BakeFontBitmap_internal(unsigned char *data, int offset,  // font location (use offset=0 for plain .ttf)
-                                float pixel_height,                     // height of font in pixels
+                                float pixel_height,                     // height of font in m_pixels
                                 unsigned char *pixels, int pw, int ph,  // bitmap to be filled in
                                 int first_char, int num_chars,          // characters to bake
                                 stbtt_bakedchar *chardata)
@@ -3822,7 +3822,7 @@ static int stbtt_BakeFontBitmap_internal(unsigned char *data, int offset,  // fo
    f.userdata = NULL;
    if (!stbtt_InitFont(&f, data, offset))
       return -1;
-   STBTT_memset(pixels, 0, pw*ph); // background of 0 around pixels
+   STBTT_memset(pixels, 0, pw*ph); // background of 0 around m_pixels
    x=y=1;
    bottom_y = 1;
 
@@ -3981,7 +3981,7 @@ STBTT_DEF int stbtt_PackBegin(stbtt_pack_context *spc, unsigned char *pixels, in
    stbrp_init_target(context, pw-padding, ph-padding, nodes, num_nodes);
 
    if (pixels)
-      STBTT_memset(pixels, 0, pw*ph); // background of 0 around pixels
+      STBTT_memset(pixels, 0, pw*ph); // background of 0 around m_pixels
 
    return 1;
 }
@@ -4139,7 +4139,7 @@ static float stbtt__oversample_shift(int oversample)
       return 0.0f;
 
    // The prefilter is a box filter of width "oversample",
-   // which shifts phase by (oversample - 1)/2 pixels in
+   // which shifts phase by (oversample - 1)/2 m_pixels in
    // oversampled space. We want to shift in the opposite
    // direction to counter this.
    return (float)-(oversample - 1) / (2.0f * (float)oversample);

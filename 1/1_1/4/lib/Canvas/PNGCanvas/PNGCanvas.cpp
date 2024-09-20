@@ -7,7 +7,7 @@
 #include <sstream>
 #include <iostream>
 
-const std::string& FONTFILEPATH = R"(C:\Users\maksimveselov\Projects\ood\1\1_1\4\lib\Canvas\PNGCanvas\font\Minecraft-Regular.ttf)";
+const std::string FONTFILEPATH = R"(/Users/maksimveselov/Projects/ood/1/1_1/4/lib/Canvas/PNGCanvas/font/Minecraft-Regular.ttf)";
 
 std::string ColorToString(const Color &color)
 {
@@ -22,9 +22,9 @@ std::string ColorToString(const Color &color)
 
 Color StringToColor(const std::string &colorString)
 {
-    Color color{0, 0, 0, 255}; // значение по умолчанию — черный цвет с полной непрозрачностью
+    Color color{0, 0, 0, 255};
     if (colorString.length() == 7 && colorString[0] == '#')
-    { // #RRGGBB
+    {
         color.r = std::stoi(colorString.substr(1, 2), nullptr, 16);
         color.g = std::stoi(colorString.substr(3, 2), nullptr, 16);
         color.b = std::stoi(colorString.substr(5, 2), nullptr, 16);
@@ -34,7 +34,6 @@ Color StringToColor(const std::string &colorString)
 
 void PNGCanvas::DrawText(double left, double top, double fontSize, const std::string& text)
 {
-    // Load the font file
     std::ifstream fontFile(FONTFILEPATH, std::ios::binary);
     if (!fontFile.is_open())
     {
@@ -98,5 +97,5 @@ void PNGCanvas::DrawText(double left, double top, double fontSize, const std::st
 
 void PNGCanvas::SaveToFile(const std::string& filename)
 {
-    stbi_write_png(filename.c_str(), width, height, 4, pixels.data(), width * 4);
+    stbi_write_png(filename.c_str(), m_w, m_h, 4, m_pixels.data(), m_w * 4);
 }

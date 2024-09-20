@@ -8,51 +8,53 @@
 #include "IShapeStrategy.h"
 #include "sstream"
 
-class TriangleStrategy : public IShapeStrategy
+namespace shapes
 {
-public:
-    TriangleStrategy(double x1, double y1, double x2, double y2, double x3, double y3)
-            : m_x1(x1), m_y1(y1), m_x2(x2), m_y2(y2), m_x3(x3), m_y3(y3)
-    {}
-
-    StrategyType GetType() override
+    class TriangleStrategy : public IShapeStrategy
     {
-        return StrategyType::TRIANGLE;
-    }
+    public:
+        TriangleStrategy(shapes::Point p1, shapes::Point p2, shapes::Point p3)
+                : m_p1(p1), m_p2(p2), m_p3(p3)
+        {}
 
-    std::string GetShapeInfo() override
-    {
-        std::ostringstream oss;
-        oss << m_x1 << " " << m_y1 << " " << m_x2 << " " << m_y2 << " " << m_x3 << " " << m_y3;
-        return oss.str();
-    }
+        shapes::StrategyType GetType() override
+        {
+            return shapes::StrategyType::TRIANGLE;
+        }
 
-    void Draw(ICanvas &canvas, const std::string &color) override
-    {
-        canvas.SetColor(color);
-        canvas.MoveTo(m_x1, m_y1);
-        canvas.LineTo(m_x2, m_y2);
-        canvas.LineTo(m_x3, m_y3);
-        canvas.LineTo(m_x1, m_y1);
-    }
+        std::string GetShapeInfo() override
+        {
+            std::ostringstream oss;
+            oss << m_p1.x << " " << m_p1.y << " " << m_p2.x << " " << m_p2.y << " " << m_p3.x << " " << m_p3.y;
+            return oss.str();
+        }
 
-    void Move(double dx, double dy) override
-    {
-        m_x1 += dx;
-        m_y1 += dy;
-        m_x2 += dx;
-        m_y2 += dy;
-        m_x3 += dx;
-        m_y3 += dy;
-    }
+        void Draw(ICanvas &canvas, const std::string &color) override
+        {
+            canvas.SetColor(color);
+            canvas.MoveTo(m_p1.x, m_p1.y);
+            canvas.LineTo(m_p2.x, m_p2.y);
+            canvas.LineTo(m_p3.x, m_p3.y);
+            canvas.LineTo(m_p1.x, m_p1.y);
+        }
 
-    [[nodiscard]] std::unique_ptr<IShapeStrategy> Clone() const override
-    {
-        return std::make_unique<TriangleStrategy>(*this);
-    }
+        void Move(double dx, double dy) override
+        {
+            m_p1.x += dx;
+            m_p1.y += dy;
+            m_p2.x += dx;
+            m_p2.y += dy;
+            m_p3.x += dx;
+            m_p3.y += dy;
+        }
 
-private:
-    double m_x1, m_y1, m_x2, m_y2, m_x3, m_y3;
-};
+        [[nodiscard]] std::unique_ptr<IShapeStrategy> Clone() const override
+        {
+            return std::make_unique<TriangleStrategy>(*this);
+        }
 
+    private:
+        shapes::Point m_p1, m_p2, m_p3;
+    };
+}
 #endif //INC_1_1_TRIANGLESTRATEGY_H

@@ -175,6 +175,8 @@ add_test(NAME 1_3_test COMMAND 1_3_test)
 # Задание 4
 set(SOURCE_FILES_4
         4/cmd/main.cpp
+        4/lib/Picture/Point.h
+        4/lib/Picture/Point.cpp
         4/lib/Canvas/ICanvas.h
         4/lib/Picture/Shape.h
         4/lib/Picture/ShapeStrategy/Type.h
@@ -213,6 +215,8 @@ set(TEST_SOURCE_FILES_4
         4/test/testProvider.cpp
         4/lib/Canvas/ICanvas.h
         4/lib/Picture/Shape.h
+        4/lib/Picture/Point.h
+        4/lib/Picture/Point.cpp
         4/lib/Picture/ShapeStrategy/Type.h
         4/lib/Picture/ShapeStrategy/Type.cpp
         4/lib/Picture/ShapeStrategy/IShapeStrategy.h

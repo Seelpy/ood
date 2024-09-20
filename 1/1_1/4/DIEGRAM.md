@@ -1,9 +1,5 @@
 classDiagram
 
-class ShapeCommandHandler{
-Handle(string command)
-}
-
 class ICanvas{
 SetColor(Color c)
 MoveTo(double x, double y)
@@ -12,14 +8,18 @@ DrawEllipse(double cx, double cy, double rx, double ry)
 DrawText(double left, double top, double fontSize, const string& text)
 }
 
+namespace shapes {
+
 class Picture{
 +AddShape(Shape shape)
 +ChangeShapeStrategy(string id, IShapeStrategy strategy)
-+RemoveShape(string id)
++DeleteShape(string id)
 +MoveShape(string id, double dx, double dy)
 +MovePicture(double dx, double dy)
-+WriteShapesInfo(ostream out)
++PrintShapesInfo()
 +DrawShape(string id)
+
+-vector shapes
 }
 
 class Shape{
@@ -28,58 +28,90 @@ class Shape{
 +ChangeColor(string color)
 +SetShapeStrategy(IShapeStrategy strategy)
 -string id
+-string color
+-IShapeStrategy strategy
 }
 
-class ShapeStrategy{
-+Move(double dx, double dy)
-+Draw(ICanvas canvas)
-}
 
 class IShapeStrategy{
 <<interface>>
++GetType() StrategyType
++Draw(ICanvas canvas, string color)
 +Move(double dx, double dy)
-+Draw(ICanvas canvas)
++GetShapeInfo() string
++Clone() IShapeStrategy
 }
-
-class TriangleStrategy{
-+Draw(ICanvas canvas)
-}
-
 
 class CircleStrategy{
-+Draw(ICanvas canvas)
++GetType() StrategyType
++Draw(ICanvas canvas, string color)
++Move(double dx, double dy)
++GetShapeInfo() string
++Clone() IShapeStrategy
+
+-Point center
+-double r
 }
 
 class TriangleStrategy{
-+Draw(ICanvas canvas)
++GetType() StrategyType
++Draw(ICanvas canvas, string color)
++Move(double dx, double dy)
++GetShapeInfo() string
++Clone() IShapeStrategy
+
+-Point p1, p2, p3
 }
 
 class RectangleStrategy{
-+Draw(ICanvas canvas)
++GetType() StrategyType
++Draw(ICanvas canvas, string color)
++Move(double dx, double dy)
++GetShapeInfo() string
++Clone() IShapeStrategy
+
+-Point leftTop
+-double w, h
 }
 
 class TextStrategy{
-+Draw(ICanvas canvas)
++GetType() StrategyType
++Draw(ICanvas canvas, string color)
++Move(double dx, double dy)
++GetShapeInfo() string
++Clone() IShapeStrategy
+
+-Point leftTop
+-double fontSize
+-string text
 }
 
 class LineStrategy{
-+Draw(ICanvas canvas)
++GetType() StrategyType
++Draw(ICanvas canvas, string color)
++Move(double dx, double dy)
++GetShapeInfo() string
++Clone() IShapeStrategy
+
+-Point p1, p2
+}
+
 }
 
 
-ShapeStrategy <|-- TriangleStrategy
-ShapeStrategy <|-- CircleStrategy
-ShapeStrategy <|-- RectangleStrategy
-ShapeStrategy <|-- LineStrategy
-ShapeStrategy <|-- TextStrategy
 
-IShapeStrategy <|.. ShapeStrategy
+IShapeStrategy <|.. TriangleStrategy
+IShapeStrategy <|.. CircleStrategy
+IShapeStrategy <|.. RectangleStrategy
+IShapeStrategy <|.. LineStrategy
+IShapeStrategy <|.. TextStrategy
 
 Shape *-- IShapeStrategy
 
-Picture o-- Shape
+IShapeStrategy ..> ICanvas
 
-ShapeCommandHandler o--Picture
+Picture *-- Shape
+Picture ..> Shape
+Picture ..> IShapeStrategy
 
-ShapeStrategy --> ICanvas
-Picture *-- ICanvas
+Picture ..> ICanvas

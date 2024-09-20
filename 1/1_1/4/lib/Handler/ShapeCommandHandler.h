@@ -53,10 +53,10 @@ void HandleCommand(const std::string &line, shapes::Picture &picture, ICanvas &c
     }
 }
 
-void HandleCommands(std::istream &str)
+void HandleCommands(std::istream &str, const std::string& outCanvasFile)
 {
     shapes::Picture picture;
-    PNGCanvas canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+    PNGCanvas canvas(CANVAS_WIDTH, CANVAS_HEIGHT, outCanvasFile);
     std::string line;
     while (getline(str, line))
     {
@@ -70,7 +70,7 @@ void HandleCommands(std::istream &str)
             HandleCommand(line, picture, canvas);
         } catch (const std::exception &e)
         {
-            std::cout << e.what();
+            std::cout << e.what() << std::endl;
         }
     }
 }

@@ -4,7 +4,7 @@
 
 #include "Type.h"
 
-std::string convertTypeToString(StrategyType type) {
+std::string shapes::ConvertTypeToString(StrategyType type) {
     switch (type) {
         case CIRCLE: return "circle";
         case RECTANGLE: return "rectangle";
@@ -15,7 +15,7 @@ std::string convertTypeToString(StrategyType type) {
     }
 }
 
-StrategyType ConvertTypeFromString(const std::string& type) {
+shapes::StrategyType shapes::ConvertTypeFromString(const std::string& type) {
     static const std::map<std::string, StrategyType> typeMap = {
             {"circle", CIRCLE},
             {"rectangle", RECTANGLE},

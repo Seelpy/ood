@@ -13,7 +13,6 @@ void MovePicture(const std::istringstream &iss, shapes::Picture &picture)
 {
     std::istringstream tmpIss(iss.str());
     auto _ = ParseCommandType(tmpIss);
-    auto id = ParseString(tmpIss);
     auto dx = ParseDouble(tmpIss);
     auto dy = ParseDouble(tmpIss);
     picture.MovePicture(dx, dy);

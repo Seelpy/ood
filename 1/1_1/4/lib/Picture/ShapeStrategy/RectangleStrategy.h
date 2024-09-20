@@ -7,55 +7,57 @@
 
 #include "IShapeStrategy.h"
 #include "sstream"
-
-class RectangleStrategy : public IShapeStrategy
+namespace shapes
 {
-public:
-    RectangleStrategy(double left, double top, double width, double height)
-            : m_left(left), m_top(top), m_width(width), m_height(height)
+    class RectangleStrategy : public IShapeStrategy
     {
-        if (width < 0 || height < 0)
+    public:
+        RectangleStrategy(shapes::Point leftTop, double width, double height)
+                : m_leftTop(leftTop), m_width(width), m_height(height)
         {
-            throw std::invalid_argument("Width and height must be non-negative");
+            if (width < 0 || height < 0)
+            {
+                throw std::invalid_argument("Width and height must be non-negative");
+            }
         }
-    }
 
-    StrategyType GetType() override
-    {
-        return StrategyType::RECTANGLE;
-    }
+        shapes::StrategyType GetType() override
+        {
+            return shapes::StrategyType::RECTANGLE;
+        }
 
-    std::string GetShapeInfo() override
-    {
-        std::ostringstream oss;
-        oss << m_color << m_left << " " << m_top << " " << m_width << " " << m_height;
-        return oss.str();
-    }
+        std::string GetShapeInfo() override
+        {
+            std::ostringstream oss;
+            oss << m_color << m_leftTop.x << " " << m_leftTop.y << " " << m_width << " " << m_height;
+            return oss.str();
+        }
 
-    void Draw(ICanvas &canvas, const std::string &color) override
-    {
-        canvas.SetColor(color);
-        canvas.MoveTo(m_left, m_top);
-        canvas.LineTo(m_left + m_width, m_top);
-        canvas.LineTo(m_left + m_width, m_top + m_height);
-        canvas.LineTo(m_left, m_top + m_height);
-        canvas.LineTo(m_left, m_top);
-    }
+        void Draw(ICanvas &canvas, const std::string &color) override
+        {
+            canvas.SetColor(color);
+            canvas.MoveTo(m_leftTop.x, m_leftTop.y);
+            canvas.LineTo(m_leftTop.x + m_width, m_leftTop.y);
+            canvas.LineTo(m_leftTop.x + m_width, m_leftTop.y + m_height);
+            canvas.LineTo(m_leftTop.x, m_leftTop.y + m_height);
+            canvas.LineTo(m_leftTop.x, m_leftTop.y);
+        }
 
-    void Move(double dx, double dy) override
-    {
-        m_left += dx;
-        m_top += dy;
-    }
+        void Move(double dx, double dy) override
+        {
+            m_leftTop.x += dx;
+            m_leftTop.y += dy;
+        }
 
-    [[nodiscard]] std::unique_ptr<IShapeStrategy> Clone() const override
-    {
-        return std::make_unique<RectangleStrategy>(*this);
-    }
+        std::unique_ptr<IShapeStrategy> Clone() const override
+        {
+            return std::make_unique<RectangleStrategy>(*this);
+        }
 
-private:
-    double m_left, m_top, m_width, m_height;
-    std::string m_color;
-};
-
+    private:
+        shapes::Point m_leftTop;
+        double m_width, m_height;
+        std::string m_color;
+    };
+}
 #endif //INC_1_1_RECTANGLESTRATEGY_H

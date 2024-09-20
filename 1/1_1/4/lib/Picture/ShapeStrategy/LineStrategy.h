@@ -8,52 +8,51 @@
 #include "IShapeStrategy.h"
 #include "sstream"
 
-class LineStrategy : public IShapeStrategy
+namespace shapes
 {
-public:
-    LineStrategy(double x1, double y1, double x2, double y2)
+    class LineStrategy : public IShapeStrategy
     {
-        m_x1 = x1;
-        m_y1 = y1;
-        m_x2 = x2;
-        m_y2 = y2;
-    }
+    public:
+        LineStrategy(shapes::Point p1, shapes::Point p2)
+        {
+            m_p1 = p1;
+            m_p2 = p2;
+        }
 
-    StrategyType GetType() override
-    {
-        return StrategyType::LINE;
-    }
+        shapes::StrategyType GetType() override
+        {
+            return shapes::StrategyType::LINE;
+        }
 
-    std::string GetShapeInfo() override
-    {
-        std::ostringstream oss;
-        oss << m_x1 << " " << m_y1 << " " << m_x2 << " " << m_y2;
-        return oss.str();
-    }
+        std::string GetShapeInfo() override
+        {
+            std::ostringstream oss;
+            oss << m_p1.x << " " << m_p1.y << " " << m_p2.x << " " << m_p2.y;
+            return oss.str();
+        }
 
-    void Draw(ICanvas &canvas, const std::string &color) override
-    {
-        canvas.SetColor(color);
-        canvas.MoveTo(m_x1, m_y1);
-        canvas.LineTo(m_x2, m_y2);
-    }
+        void Draw(ICanvas &canvas, const std::string &color) override
+        {
+            canvas.SetColor(color);
+            canvas.MoveTo(m_p1.x, m_p1.y);
+            canvas.LineTo(m_p2.x, m_p2.y);
+        }
 
-    void Move(double dx, double dy) override
-    {
-        m_x1 += dx;
-        m_x2 += dx;
-        m_y1 += dy;
-        m_y2 += dy;
-    }
+        void Move(double dx, double dy) override
+        {
+            m_p1.x += dx;
+            m_p2.x += dx;
+            m_p1.y += dy;
+            m_p2.y += dy;
+        }
 
-    [[nodiscard]] std::unique_ptr<IShapeStrategy> Clone() const override
-    {
-        return std::make_unique<LineStrategy>(*this);
-    }
+        [[nodiscard]] std::unique_ptr<IShapeStrategy> Clone() const override
+        {
+            return std::make_unique<LineStrategy>(*this);
+        }
 
-private:
-    double m_x1, m_y1;
-    double m_x2, m_y2;
-};
-
+    private:
+        shapes::Point m_p1{}, m_p2{};
+    };
+}
 #endif //INC_1_1_LINESTRATEGY_H

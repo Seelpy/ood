@@ -20,13 +20,10 @@ namespace shapes
         void MovePicture(double dx, double dy);
         void DeleteShape(const std::string& id);
 
-        std::string GetShapeColorById(const std::string& id) const;
-        std::string GetShapeById(const std::string& id) const;
         void PrintShapesInfo() const;
 
         void ChangeColor(const std::string& id, const std::string& color);
-        void ChangeShape(const std::string& id, std::unique_ptr<IShapeStrategy> newShapeGeometryType);
-
+        void ChangeShape(const std::string& id, std::unique_ptr<IShapeStrategy> newShapeStrategy);
 
         void DrawShape(const std::string& id, ICanvas& canvas) const;
         void DrawPicture(ICanvas& canvas) const;
@@ -35,6 +32,9 @@ namespace shapes
 
     private:
         std::map<std::string, std::unique_ptr<Shape>> m_shapes;
+        std::vector<std::string> m_ids = {};
+
+        void AssertShapeExist(const std::string& id) const;
     };
 
 }

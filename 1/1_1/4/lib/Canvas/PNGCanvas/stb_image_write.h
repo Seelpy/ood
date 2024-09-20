@@ -77,13 +77,13 @@ USAGE:
    Each function returns 0 on failure and non-0 on success.
 
    The functions create an image file defined by the parameters. The image
-   is a rectangle of pixels stored from left-to-right, top-to-bottom.
+   is a rectangle of m_pixels stored from left-to-right, top-to-bottom.
    Each pixel contains 'comp' channels of data stored interleaved with 8-bits
    per channel, in the following order: 1=Y, 2=YA, 3=RGB, 4=RGBA. (Y is
-   monochrome color.) The rectangle is 'w' pixels wide and 'h' pixels tall.
+   monochrome color.) The rectangle is 'w' m_pixels wide and 'h' m_pixels tall.
    The *data pointer points to the first byte of the top-left-most pixel.
    For PNG, "stride_in_bytes" is the distance in bytes from the first byte of
-   a row of pixels to the first byte of the next row of pixels.
+   a row of m_pixels to the first byte of the next row of m_pixels.
 
    PNG creates output files with the same number of components as the input.
    The BMP format expands Y to RGB in the file format and does not
@@ -424,7 +424,7 @@ static void stbiw__write_pixel(stbi__write_context *s, int rgb_dir, int comp, in
       stbiw__write1(s, d[comp - 1]);
 
    switch (comp) {
-      case 2: // 2 pixels = mono + alpha, alpha is written separately, so same as 1-channel case
+      case 2: // 2 m_pixels = mono + alpha, alpha is written separately, so same as 1-channel case
       case 1:
          if (expand_mono)
             stbiw__write3(s, d[0], d[0], d[0]); // monochrome bmp

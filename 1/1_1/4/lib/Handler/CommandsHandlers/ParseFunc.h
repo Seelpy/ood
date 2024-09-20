@@ -33,10 +33,10 @@ std::string GetNextCommandPart(std::istringstream &command)
 }
 
 
-StrategyType ParseShapeType(std::istringstream &command)
+shapes::StrategyType ParseShapeType(std::istringstream &command)
 {
     auto part = GetNextCommandPart(command);
-    return ConvertTypeFromString(part);
+    return shapes::ConvertTypeFromString(part);
 }
 
 double ParseDouble(std::istringstream &command)
@@ -64,7 +64,7 @@ std::string ParseString(std::istringstream &command)
     return GetNextCommandPart(command);
 }
 
-std::string ParseText(std::istringstream& command)
+std::string ParseText(std::istringstream &command)
 {
     std::string text;
     getline(command, text);
@@ -76,24 +76,24 @@ CommandType ParseCommandType(std::istringstream &command)
     return ConvertCommandTypeFromString(GetNextCommandPart(command));
 }
 
-CircleStrategy ParseCircleStrategy(std::istringstream &iss)
+shapes::CircleStrategy ParseCircleStrategy(std::istringstream &iss)
 {
     auto x = ParseDouble(iss);
     auto y = ParseDouble(iss);
     auto r = ParseDouble(iss);
-    return {x, y, r};
+    return {shapes::Point{.x =  x, .y =  y}, r};
 }
 
-RectangleStrategy ParseRectangleStrategy(std::istringstream &iss)
+shapes::RectangleStrategy ParseRectangleStrategy(std::istringstream &iss)
 {
     auto left = ParseDouble(iss);
     auto top = ParseDouble(iss);
     auto width = ParseDouble(iss);
     auto height = ParseDouble(iss);
-    return {left, top, width, height};
+    return {shapes::Point{.x = left, .y =   top}, width, height};
 }
 
-TriangleStrategy ParseTriangleStrategy(std::istringstream &iss)
+shapes::TriangleStrategy ParseTriangleStrategy(std::istringstream &iss)
 {
     auto x1 = ParseDouble(iss);
     auto y1 = ParseDouble(iss);
@@ -101,37 +101,43 @@ TriangleStrategy ParseTriangleStrategy(std::istringstream &iss)
     auto y2 = ParseDouble(iss);
     auto x3 = ParseDouble(iss);
     auto y3 = ParseDouble(iss);
-    return {x1, y1, x2, y2, x3, y3};
+    return {shapes::Point{.x = x1, .y = y1}, shapes::Point{.x = x2, .y = y2}, shapes::Point{.x = x3, .y = y3}};
 }
 
-LineStrategy ParseLineStrategy(std::istringstream &iss)
+shapes::LineStrategy ParseLineStrategy(std::istringstream &iss)
 {
     auto x1 = ParseDouble(iss);
     auto y1 = ParseDouble(iss);
     auto x2 = ParseDouble(iss);
     auto y2 = ParseDouble(iss);
-    return {x1, y1, x2, y2};
+    return {shapes::Point{.x = x1, .y = y1}, shapes::Point{.x = x2, .y = y2}};
 }
 
-TextStrategy ParseTextStrategy(std::istringstream &iss)
+shapes::TextStrategy ParseTextStrategy(std::istringstream &iss)
 {
     auto x1 = ParseDouble(iss);
     auto y1 = ParseDouble(iss);
     auto size = ParseDouble(iss);
     auto text = ParseText(iss);
-    return {x1, y1, size, text};
+    return {shapes::Point{.x =x1, .y = y1}, size, text};
 }
 
-std::unique_ptr<IShapeStrategy> ParseShapeStrategy(StrategyType shapeType, std::istringstream &iss)
+std::unique_ptr<shapes::IShapeStrategy> ParseShapeStrategy(shapes::StrategyType shapeType, std::istringstream &iss)
 {
     switch (shapeType)
     {
-        case StrategyType::CIRCLE: return std::make_unique<CircleStrategy>(ParseCircleStrategy(iss));
-        case StrategyType::RECTANGLE: return std::make_unique<RectangleStrategy>(ParseRectangleStrategy(iss));
-        case StrategyType::LINE: return std::make_unique<LineStrategy>(ParseLineStrategy(iss));
-        case StrategyType::TEXT:return std::make_unique<TextStrategy>(ParseTextStrategy(iss));
-        case StrategyType::TRIANGLE:return std::make_unique<TriangleStrategy>(ParseTriangleStrategy(iss));
-        default: throw std::invalid_argument("unexpected shape type");
+        case shapes::StrategyType::CIRCLE:
+            return std::make_unique<shapes::CircleStrategy>(ParseCircleStrategy(iss));
+        case shapes::StrategyType::RECTANGLE:
+            return std::make_unique<shapes::RectangleStrategy>(ParseRectangleStrategy(iss));
+        case shapes::StrategyType::LINE:
+            return std::make_unique<shapes::LineStrategy>(ParseLineStrategy(iss));
+        case shapes::StrategyType::TEXT:
+            return std::make_unique<shapes::TextStrategy>(ParseTextStrategy(iss));
+        case shapes::StrategyType::TRIANGLE:
+            return std::make_unique<shapes::TriangleStrategy>(ParseTriangleStrategy(iss));
+        default:
+            throw std::invalid_argument("unexpected shape type");
     }
 }
 
