@@ -1,0 +1,3 @@
+/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/gfx-subbuild/CMakeFiles/gfx-populate.dir
+/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/gfx-subbuild/CMakeFiles/edit_cache.dir
+/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/gfx-subbuild/CMakeFiles/rebuild_cache.dir

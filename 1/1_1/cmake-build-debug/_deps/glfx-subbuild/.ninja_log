@@ -1,0 +1,21 @@
+# ninja log v5
+0	10	1725827363714396028	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-mkdir	6b5ad860051b9a77
+0	676	0	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-update	a14a91a7bd5fa84
+0	4985	1725827528893529790	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-download	bf5eab4dc33c7141
+0	676	0	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-update	a14a91a7bd5fa84
+688	699	1725827664796368000	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-configure	6a36c17455cc022a
+688	699	1725827664796368000	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-configure	6a36c17455cc022a
+676	688	1725827664785150000	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-patch	a60679c9bd62e78e
+0	10	1725827363714396028	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-mkdir	6b5ad860051b9a77
+699	711	1725827664808100000	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-build	36735252a8a837d7
+0	4985	1725827528893529790	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-download	bf5eab4dc33c7141
+676	688	1725827664785150000	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-patch	a60679c9bd62e78e
+711	723	1725827664819933000	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-install	715e4598043e4e5f
+699	711	1725827664808100000	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-build	36735252a8a837d7
+723	734	1725827664831091000	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-test	5f6273d025b52e7e
+723	734	1725827664831091000	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-test	5f6273d025b52e7e
+734	750	1725827664847355000	glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-done	3442e46d9781f983
+734	750	1725827664847355000	CMakeFiles/glfx-populate-complete	3442e46d9781f983
+711	723	1725827664819933000	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-install	715e4598043e4e5f
+734	750	1725827664847355000	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-done	3442e46d9781f983
+734	750	1725827664847355000	/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/CMakeFiles/glfx-populate-complete	3442e46d9781f983

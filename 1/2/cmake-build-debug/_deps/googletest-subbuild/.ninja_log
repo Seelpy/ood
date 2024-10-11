@@ -1,0 +1,21 @@
+# ninja log v5
+14	4388	1727188735491594415	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	7b1282e8c21299a
+4440	4450	1727188735554059755	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	f9c84da713cad2bc
+4398	4410	1727188735514168081	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	3cae85f66f60624
+0	13	1727188731117442824	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	918139cbb4b85a5c
+14	4388	1727188735491594415	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	7b1282e8c21299a
+4450	4464	1727188735568586352	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	fc30cc0b073e9543
+4388	4398	1727188735502416686	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	adbc646a1f2e9e92
+4388	4398	1727188735502416686	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	adbc646a1f2e9e92
+4410	4420	1727188735524410394	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	9f0d474f2caf9c1d
+4450	4464	1727188735568586352	CMakeFiles/googletest-populate-complete	fc30cc0b073e9543
+4398	4410	1727188735514168081	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	3cae85f66f60624
+4410	4420	1727188735524410394	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	9f0d474f2caf9c1d
+0	13	1727188731117442824	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	918139cbb4b85a5c
+4420	4430	1727188735534310501	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	72f055f3d9320289
+4440	4450	1727188735554059755	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	f9c84da713cad2bc
+4430	4440	1727188735544210399	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	c632c1499250703a
+4450	4464	1727188735568586352	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/CMakeFiles/googletest-populate-complete	fc30cc0b073e9543
+4420	4430	1727188735534310501	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	72f055f3d9320289
+4450	4464	1727188735568586352	/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	fc30cc0b073e9543
+4430	4440	1727188735544210399	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	c632c1499250703a

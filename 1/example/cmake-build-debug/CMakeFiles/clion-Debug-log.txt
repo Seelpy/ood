@@ -1,0 +1,13 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/maksimveselov/Projects/ood/1/2_2 -B /Users/maksimveselov/Projects/ood/1/2_2/cmake-build-debug
+CMake Error: The current CMakeCache.txt directory /Users/maksimveselov/Projects/ood/1/2_2/cmake-build-debug/_deps/googletest-subbuild/CMakeCache.txt is different than the directory /Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+
+CMake Error at /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FetchContent.cmake:1650 (message):
+  CMake step for googletest failed: 1
+Call Stack (most recent call first):
+  /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FetchContent.cmake:1802:EVAL:2 (__FetchContent_directPopulate)
+  /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FetchContent.cmake:1802 (cmake_language)
+  /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FetchContent.cmake:2016 (FetchContent_Populate)
+  CMakeLists.txt:15 (FetchContent_MakeAvailable)
+
+
+-- Configuring incomplete, errors occurred!

@@ -1,0 +1,16 @@
+# ninja log v5
+0	508	1716577531839382302	CMakeFiles/7_2_2.dir/cmd/main.cpp.o	48ec5ba0c60824f0
+510	601	1716577531931900799	/Users/maksimveselov/Volgatech/OOP/l7/2_2/bin/7_2_2	97fdf01a6a73242e
+0	304	1716882100473208451	build.ninja	f0ff841f8dd35889
+734	834	1716618599490578749	/Users/maksimveselov/Volgatech/OOP/l7/2_2/bin/7_2_2_test	c572dcfe51d08622
+0	600	1716577549667345388	_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	3f68f843c9c47fc
+1	1646	1716577550709497982	_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o	c5a022c9b84648f2
+3	44	1716577627440051000	lib/libgtest.a	f3e2e0260090b16a
+44	67	1716577627463450000	lib/libgtest_main.a	173d721be4f94a5c
+2	734	1716618599391147180	CMakeFiles/7_2_2_test.dir/test/testProvider.cpp.o	aca296873e877670
+2	3513	1717051301907677225	CMakeFiles/7_2_2_test.dir/test/testProvider.cpp.o	aca296873e877670
+3513	5178	1717051303575696836	/Users/maksimveselov/Volgatech/OOP/l7/2_2/bin/7_2_2_test	c572dcfe51d08622
+2	685	1717051371532220619	CMakeFiles/7_2_2_test.dir/test/testProvider.cpp.o	aca296873e877670
+685	734	1717051371583492976	/Users/maksimveselov/Volgatech/OOP/l7/2_2/bin/7_2_2_test	c572dcfe51d08622
+2	615	1717051376661340787	CMakeFiles/7_2_2_test.dir/test/testProvider.cpp.o	aca296873e877670
+616	660	1717051376708801761	/Users/maksimveselov/Volgatech/OOP/l7/2_2/bin/7_2_2_test	c572dcfe51d08622

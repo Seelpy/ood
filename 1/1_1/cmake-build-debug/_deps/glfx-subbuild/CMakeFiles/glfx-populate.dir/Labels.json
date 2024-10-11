@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/CMakeFiles/glfx-populate"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/CMakeFiles/glfx-populate.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/CMakeFiles/glfx-populate-complete.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-build.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-configure.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-download.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-install.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-mkdir.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-patch.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-test.rule"
+		},
+		{
+			"file" : "/Users/maksimveselov/Projects/ood/1/1_1/cmake-build-debug/_deps/glfx-subbuild/glfx-populate-prefix/src/glfx-populate-stamp/glfx-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"glfx-populate"
+		],
+		"name" : "glfx-populate"
+	}
+}

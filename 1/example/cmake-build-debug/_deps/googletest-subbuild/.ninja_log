@@ -1,0 +1,21 @@
+# ninja log v5
+0	10	1716543572520559027	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	12ff441c6700529a
+4802	4812	1716543577321985018	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	f198b831afab9d9b
+4822	4831	1716543577341317069	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	9316b0dceaa2a2f5
+4851	4865	1716543577375293396	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/CMakeFiles/googletest-populate-complete	9c4e01bc3e401d91
+4851	4865	1716543577375293396	CMakeFiles/googletest-populate-complete	9c4e01bc3e401d91
+0	10	1716543572520559027	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-mkdir	12ff441c6700529a
+4841	4851	1716543577361601240	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	e15d8d6be4cc89dc
+11	4792	1716543577301582013	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	a9955d09e30537f5
+4792	4802	1716543577312213097	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	27f9cc6dd3c40756
+4841	4851	1716543577361601240	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-test	e15d8d6be4cc89dc
+4802	4812	1716543577321985018	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-patch	f198b831afab9d9b
+4792	4802	1716543577312213097	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-update	27f9cc6dd3c40756
+4812	4822	1716543577331710439	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	3f869c48bfd18ba2
+4831	4841	1716543577351416280	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	d1fa3e599c318041
+4812	4822	1716543577331710439	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-configure	3f869c48bfd18ba2
+11	4792	1716543577301582013	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-download	a9955d09e30537f5
+4851	4865	1716543577375293396	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	9c4e01bc3e401d91
+4822	4831	1716543577341317069	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-build	9316b0dceaa2a2f5
+4831	4841	1716543577351416280	googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-install	d1fa3e599c318041
+4851	4865	1716543577375293396	/Users/maksimveselov/Volgatech/OOP/l7/2_2/cmake-build-debug/_deps/googletest-subbuild/googletest-populate-prefix/src/googletest-populate-stamp/googletest-populate-done	9c4e01bc3e401d91
