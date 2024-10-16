@@ -1,0 +1,10 @@
+triangle blue 400 380 300 700 500 700
+ellipse black 400 350 30 30
+ellipse green 390 350 5 5
+ellipse green 410 350 5 5
+rpolygon pink 420 320 8 20
+rpolygon pink 380 320 8 20
+rectangle black 360 700 380 780
+rectangle black 420 700 440 780
+rectangle black 260 550 360 570
+rectangle black 440 550 540 570

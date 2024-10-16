@@ -8,7 +8,7 @@
 class CompressDecorator : public COutputDataStreamDecorator
 {
 public:
-    CompressDecorator(IOutputStreamPtr &&output): COutputDataStreamDecorator(std::move(output))
+    explicit CompressDecorator(IOutputStreamPtr &&output): COutputDataStreamDecorator(std::move(output))
     {
     }
 

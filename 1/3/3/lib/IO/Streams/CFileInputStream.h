@@ -34,7 +34,6 @@ public:
         char byte;
         if (!inFile.get(byte))
         {
-            std::cout<< "------" << IsEOF() << "-----";
             throw std::logic_error("Failed to read byte from file.");
         }
         return static_cast<uint8_t>(byte);

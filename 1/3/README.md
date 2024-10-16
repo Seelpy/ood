@@ -168,3 +168,99 @@ classDiagram
             - unsigned m_mass
         }
     }   
+
+
+```mermaid
+classDiagram
+    namespace IO {
+    class IInputDataStream{
+        + IsEOF()
+        + ReadByte() uint
+        + ReadBlock(void buffer, streamsize) streamsize
+    }
+
+    class IOutputDataStream{
+        + WriteByte(uint data)
+        + WriteBlock(void data, streamsize size) 
+        + Close()
+    }
+
+    class CMemoryInputStream{
+        - m_buffer: vector
+        - m_currentPossition: size_t
+        + IsEOF()
+        + ReadByte() uint
+        + ReadBlock(void buffer, streamsize) streamsize
+    }
+    class CFileInputStream{
+        - ifstream m_file
+        + IsEOF()
+        + ReadByte() uint
+        + ReadBlock(void buffer, streamsize) streamsize
+    }
+    class CMemoryOutputStream{
+        - m_buffer: vector
+        + WriteByte(uint data)
+        + WriteBlock(void data, streamsize size) 
+        + Close()
+    }
+    class CFileOutputStream{
+        - ofstream: m_file
+        + WriteByte(uint data)
+        + WriteBlock(void data, streamsize size) 
+        + Close()
+    }
+
+    class COutputDataStreamDecorator{
+        # m_output: IOutputStreamPtr 
+        + WriteByte(uint data)
+        + WriteBlock(void data, streamsize size) 
+        + Close()
+    }
+    class CInputDataStreamDecorator{
+        # m_input: IInputStreamPtr 
+         + IsEOF()
+        + ReadByte() uint
+        + ReadBlock(void buffer, streamsize) streamsize
+    }
+    class CompressDecorator{
+        - m_entry:RLEEntry 
+        - WriteRLEEntry(RLEEntry entry)
+        - AddToRLEEntryOrNew(RLEEntry entry, uint data): RLEEntry
+        + WriteByte(uint data)
+        + WriteBlock(void data, streamsize size) 
+        + Close()
+    }
+    class EncryptDecorator{
+        - m_table: SubstitutionTable
+        + WriteByte(uint data)
+        + WriteBlock(void data, streamsize size) 
+        + Close()
+    }
+    class DecompressDecorator{
+        - m_entry: RLEEntry 
+        - UpdateIfNeedEntry()
+         + IsEOF()
+        + ReadByte() uint
+        + ReadBlock(void buffer, streamsize) streamsize
+    }
+    class DecryptDeocrator{
+        - m_table: SubstitutionTable
+        + IsEOF()
+        + ReadByte() uint
+        + ReadBlock(void buffer, streamsize) streamsize
+    }
+    }
+
+    CMemoryInputStream ..|> IInputDataStream
+    CFileInputStream ..|> IInputDataStream
+    CMemoryOutputStream ..|> IOutputDataStream
+    CFileInputStream ..|> IInputDataStream
+    CFileOutputStream ..|> IOutputDataStream
+    CInputDataStreamDecorator ..|> IInputDataStream
+    COutputDataStreamDecorator ..|> IOutputDataStream
+    CompressDecorator --> COutputDataStreamDecorator
+    EncryptDecorator --> COutputDataStreamDecorator
+    DecompressDecorator --> CInputDataStreamDecorator
+    DecryptDeocrator --> CInputDataStreamDecorator    
+```
