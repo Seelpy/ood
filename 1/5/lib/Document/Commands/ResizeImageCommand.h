@@ -25,7 +25,7 @@ public:
         if (auto image = m_items.at(m_index).GetImage(); image != nullptr)
         {
             m_oldW = image->GetWidth();
-            m_oldH = image->GetHeight();
+            //m_oldH = image->GetHeight();
             image->Resize(m_newW, m_newH);
         }
         else
@@ -57,7 +57,7 @@ public:
         return false;
     }
 private:
-    std::vector<DocumentItem> m_items;
+    std::vector<DocumentItem> & m_items;
     size_t m_index;
     unsigned int m_oldW;
     unsigned int m_oldH;

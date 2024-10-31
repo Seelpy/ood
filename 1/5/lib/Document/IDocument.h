@@ -48,7 +48,7 @@ public:
 
     virtual void Save(const std::string &path) const = 0;
 
-    virtual void List() = 0;
+    virtual std::vector<ConstDocumentItem> List() = 0;
 
     virtual ~IDocument() = default;
 };

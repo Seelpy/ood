@@ -1,6 +1,5 @@
 #pragma once
 
-#include "./../../Command/AbstractUndoableEdit.h"
 #include "./../DocumentItem.h"
 #include <utility>
 #include <vector>

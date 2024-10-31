@@ -9,7 +9,8 @@ std::string FormatDocumentItemToHTML(ConstDocumentItem item)
 {
     if (auto image = item.GetImage(); image != nullptr)
     {
-        return "<p> IMAGE:" + image->GetPath() + "</p>";
+        return "<img src=\"" + image->GetPath() + "\" width=\"" + std::to_string(image->GetWidth()) +
+               "\" height=\"" + std::to_string(image->GetHeight()) + "\" />";
     }
     if (auto paragraph = item.GetParagraph(); paragraph != nullptr)
     {

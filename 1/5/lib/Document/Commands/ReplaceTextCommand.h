@@ -57,7 +57,7 @@ public:
     }
 
 private:
-    std::vector<DocumentItem> m_items;
+    std::vector<DocumentItem> & m_items;
     size_t m_index;
     std::string m_oldText;
     std::string m_newText;

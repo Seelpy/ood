@@ -10,12 +10,12 @@
 #include "./Commands/InsertDocumentItemCommand.h"
 #include "./Commands/InsertImageCommand.h"
 #include "./Commands/InsertParagraphCommand.h"
-#include "./Commands/ListCommand.h"
 #include "./Commands/ReplaceTextCommand.h"
 #include "./Commands/ResizeImageCommand.h"
 #include "./Commands/SetTitleCommand.h"
 #include "./HTML/utils.h"
 #include <fstream>
+#include "./Util/FileCopy.h"
 
 class Document : public IDocument
 {
@@ -43,7 +43,8 @@ public:
             const std::string &path, int w, int h,
             std::optional<size_t> position = std::nullopt) override
     {
-        AddAndExecuteCommand(std::make_shared<InsertImageCommand>(m_documentItems, position, path, w, h));
+        auto copyImagePath = CopyFile(path, "./images/");
+        AddAndExecuteCommand(std::make_shared<InsertImageCommand>(m_documentItems, position, copyImagePath, w, h));
     }
 
     [[nodiscard]] size_t GetItemsCount() const override
@@ -116,10 +117,9 @@ public:
         outFile.close();
     }
 
-    void List() override
+    std::vector<ConstDocumentItem> List() override
     {
-        auto consts = GetConstItems();
-        AddAndExecuteCommand(std::make_shared<ListCommand>(m_title, consts));
+        return GetConstItems();
     }
 
 private:

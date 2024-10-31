@@ -18,6 +18,11 @@ public:
 
     void RedoImpl() override
     {
+        if (m_index >= m_items.size())
+        {
+            throw std::invalid_argument("Out of range by position");
+        }
+
         m_removedItem = m_items.at(m_index);
         m_items.erase(m_items.begin() + m_index);
     }
@@ -30,7 +35,7 @@ public:
         }
     }
 
-    bool ReplaceEditImpl(const undo::IUndoableEditPtr &edit)
+    bool ReplaceEditImpl(const undo::IUndoableEditPtr &edit) override
     {
         if (auto otherInsert = std::dynamic_pointer_cast<DeleteItemCommand>(edit);
                 otherInsert && otherInsert->m_index == m_index)
@@ -41,7 +46,7 @@ public:
     }
 
 private:
-    std::vector<DocumentItem> m_items;
+    std::vector<DocumentItem>& m_items;
     size_t m_index;
     std::optional<DocumentItem> m_removedItem;
 };

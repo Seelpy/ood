@@ -35,6 +35,6 @@ public:
     }
 
 private:
-    std::string m_oldTitle;
+    std::string & m_oldTitle;
     std::string m_newTitle;
 };
