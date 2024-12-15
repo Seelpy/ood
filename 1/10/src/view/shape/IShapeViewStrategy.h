@@ -6,9 +6,9 @@
 class IShapeViewStrategy
 {
 public:
-    virtual ~IShapeViewStrategy();
+    virtual ~IShapeViewStrategy() = default;
 
-    virtual void Show(ICanvas &canvas, Rect frame, RGBAColor fillColor, RGBAColor lineColor, unsigned lineThickness);
+    virtual void Show(ICanvas &canvas, Rect frame, RGBAColor fillColor, RGBAColor lineColor, unsigned lineThickness) = 0;
 };
 
 typedef std::shared_ptr<IShapeViewStrategy> IShapeViewStrategyPtr;

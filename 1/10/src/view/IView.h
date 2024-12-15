@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Canvas/ICanvas.h"
+#include "canvas/ICanvas.h"
 #include <memory>
 
 class IView

@@ -7,9 +7,9 @@
 class ShapeViewFactory
 {
 public:
-    static ShapeView CreateView(IShapePtr shape)
+    static std::shared_ptr<ShapeView> CreateView(const IShapePtr &shape)
     {
-        return ShapeView(
+        return std::make_shared<ShapeView>(
                 CreateStrategy(shape),
                 shape->GetFrame(),
                 shape->GetFillStyle()->GetColor(),
@@ -19,7 +19,7 @@ public:
     }
 
 private:
-    static IShapeViewStrategyPtr CreateStrategy(IShapePtr shape)
+    static IShapeViewStrategyPtr CreateStrategy(const IShapePtr &shape)
     {
         if (shape->GetType() == "circle")
         {

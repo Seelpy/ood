@@ -7,19 +7,13 @@
 class Draft : public IDraft
 {
 public:
-    Draft(const Rect &frame) : m_frame(frame)
+    Draft(const Size &size) : m_size(size)
     {
     }
 
-    const std::vector<ConstIShapePtr> &ListShapes() override
+    const std::vector<IShapePtr> &ListShapes() override
     {
-        static std::vector<ConstIShapePtr> shapes;
-        shapes.reserve(m_shapes.size());
-        for (const auto &shape: m_shapes)
-        {
-            shapes.push_back((shape));
-        }
-        return shapes;
+        return m_shapes;
     }
 
     void AddShape(const IShapePtr &shape) override
@@ -38,9 +32,9 @@ public:
         Notify();
     }
 
-    Rect GetFrame() override
+    Size GetSize() override
     {
-        return m_frame;
+        return m_size;
     }
 
     void RegisterObserver(const std::function<void()>& observer) override
@@ -54,7 +48,7 @@ private:
         m_observer();
     }
 
-    Rect m_frame;
+    Size m_size;
     std::vector<IShapePtr> m_shapes;
     boost::signals2::signal<void()> m_observer;
 };

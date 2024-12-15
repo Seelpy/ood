@@ -3,11 +3,14 @@
 #include "./../../common/Color.h"
 #include <memory>
 
-class ILineStyle {
+class ILineStyle
+{
 public:
-    ~ILineStyle();
-    virtual RGBAColor GetColor();
-    virtual unsigned int GetThickness();
+    virtual ~ILineStyle() = default;
+
+    virtual RGBAColor GetColor() = 0;
+
+    virtual unsigned int GetThickness() = 0;
 };
 
 typedef std::shared_ptr<ILineStyle> ILineStylePtr;

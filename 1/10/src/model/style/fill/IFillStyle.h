@@ -5,8 +5,8 @@
 
 class IFillStyle {
 public:
-    virtual ~IFillStyle();
-    virtual RGBAColor GetColor();
+    virtual ~IFillStyle() = default;
+    virtual RGBAColor GetColor() = 0;
 };
 
 typedef std::shared_ptr<IFillStyle> IFillStylePtr;

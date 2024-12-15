@@ -10,7 +10,7 @@ class History: public IExecuter, public IHistory
 public:
     History() = default;
 
-    void AddAndExecuteCommand(ICommand command) override
+    void AddAndExecuteCommand(ICommandPtr command) override
     {
         m_commands.insert(m_commands.begin() + m_state + 1, command);
         Redo();
@@ -26,7 +26,7 @@ public:
         if (CanRedo())
         {
             m_state++;
-            m_commands.at(m_state).Redo();
+            m_commands.at(m_state)->Redo();
         }
     }
 
@@ -39,12 +39,12 @@ public:
     {
         if (CanUndo())
         {
-            m_commands.at(m_state).Redo();
+            m_commands.at(m_state)->Redo();
             m_state--;
         }
     }
 
 private:
-    std::vector <ICommand> m_commands;
+    std::vector<ICommandPtr> m_commands;
     int m_state = 0;
 };

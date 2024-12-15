@@ -3,13 +3,13 @@
 class IHistory
 {
 public:
-    virtual ~IHistory();
+    virtual ~IHistory() = default;
 
-    virtual bool CanRedo();
+    virtual bool CanRedo() = 0;
 
-    virtual void Redo();
+    virtual void Redo() = 0;
 
-    virtual bool CanUndo();
+    virtual bool CanUndo() = 0;
 
-    virtual void Undo();
+    virtual void Undo() = 0;
 };

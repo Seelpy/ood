@@ -4,5 +4,8 @@
 
 class IPresenter
 {
-    virtual IViewPtr GetView();
+public:
+    virtual ~IPresenter() = default;
+
+    virtual IViewPtr GetView() = 0;
 };

@@ -16,6 +16,8 @@ public:
         m_thickness = thickness;
     }
 
+    ~ShapeView() override = default;
+
     void Show(ICanvas &canvas) override
     {
         m_strategy->Show(canvas, m_frame, m_fillColor, m_lineColor, m_thickness);

@@ -12,23 +12,23 @@ typedef std::string ShapeType;
 class IShape
 {
 public:
-    virtual ~IShape();
+    virtual ~IShape() = default;
 
-    virtual ShapeType GetType();
+    virtual ShapeType GetType() = 0;
 
-    virtual Rect GetFrame();
+    virtual Rect GetFrame() = 0;
 
-    virtual void SetFrame(Rect frame);
+    virtual void SetFrame(Rect frame) = 0;
 
-    virtual IFillStylePtr GetFillStyle();
+    virtual IFillStylePtr GetFillStyle() = 0;
 
-    virtual void SetFillStyle(IFillStylePtr style);
+    virtual void SetFillStyle(IFillStylePtr style) = 0;
 
-    virtual ILineStylePtr GetLineStyle();
+    virtual ILineStylePtr GetLineStyle() = 0;
 
-    virtual void SetLineStyle(ILineStylePtr style);
+    virtual void SetLineStyle(ILineStylePtr style) = 0;
 
-    virtual void RegisterObserver(const std::function<void()> &observer);
+    virtual void RegisterObserver(const std::function<void()> &observer) = 0;
 };
 
 typedef std::shared_ptr<IShape> IShapePtr;

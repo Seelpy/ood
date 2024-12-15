@@ -6,15 +6,17 @@
 class IDraft
 {
 public:
-    virtual ~IDraft();
+    virtual ~IDraft() = default;
 
-    virtual const std::vector<ConstIShapePtr> &ListShapes();
+    virtual const std::vector<IShapePtr> &ListShapes() = 0;
 
-    virtual void AddShape(const IShapePtr &shape);
+    virtual void AddShape(const IShapePtr &shape) = 0;
 
-    virtual void RemoveShape(size_t index);
+    virtual void RemoveShape(size_t index) = 0;
 
-    virtual Rect GetFrame();
+    virtual Size GetSize() = 0;
 
-    virtual void RegisterObserver(const std::function<void()>& observer);
+    virtual void RegisterObserver(const std::function<void()>& observer) = 0;
 };
+
+typedef std::shared_ptr<IDraft> IDraftPtr;

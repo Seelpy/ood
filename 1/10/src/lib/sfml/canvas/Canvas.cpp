@@ -138,7 +138,7 @@ void Canvas::FillEllipse(Rect frame)
     ellipse.setPosition({(float) frame.LeftTop().X(), (float) frame.LeftTop().Y()});
     ellipse.setScale({1, (float) (frame.GetSize().GetHeight() / frame.GetSize().GetWidth())});
 
-    ellipse.setOutlineThickness(0);
+    ellipse.setOutlineThickness(1);
     ellipse.setFillColor(m_fillColor);
 
     m_renderTarget.draw(ellipse);

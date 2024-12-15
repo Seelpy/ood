@@ -1,13 +1,17 @@
 #pragma once
 
+#include <memory>
+
 class ICommand
 {
 public:
-    virtual ~ICommand();
+    virtual ~ICommand() = default;
 
-    virtual void Redo();
+    virtual void Redo() = 0;
 
-    virtual void Undo();
+    virtual void Undo() = 0;
 
-    virtual void Destroy();
+    virtual void Destroy() = 0;
 };
+
+typedef std::shared_ptr<ICommand> ICommandPtr;

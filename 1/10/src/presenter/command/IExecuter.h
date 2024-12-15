@@ -2,6 +2,7 @@
 
 #include "ICommand.h"
 
-class IExecuter {
-    virtual void AddAndExecuteCommand(ICommand command);
+class IExecuter
+{
+    virtual void AddAndExecuteCommand(ICommandPtr command) = 0;
 };
