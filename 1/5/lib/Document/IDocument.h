@@ -46,7 +46,7 @@ public:
 
     virtual void Redo() = 0;
 
-    virtual void Save(const std::string &path) const = 0;
+    virtual void Save(const std::string &path) = 0;
 
     virtual std::vector<ConstDocumentItem> List() = 0;
 

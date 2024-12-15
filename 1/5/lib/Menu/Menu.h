@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <utility>
+#include <exception>
 
 class Menu
 {
@@ -21,11 +22,20 @@ public:
         ShowInstructions();
 
         std::string command;
-        while ((std::cout << ">")
-               && getline(std::cin, command)
-               && !command.empty()
-               && ExecuteCommand(command))
+        while (std::cout << ">")
         {
+            getline(std::cin, command);
+            if (command.empty())
+            {
+                break;
+            }
+            try
+            {
+                ExecuteCommand(command);
+            } catch (const std::exception& e)
+            {
+                std::cout << e.what() << std::endl;
+            }
         }
     }
 
@@ -41,6 +51,11 @@ public:
     void Exit()
     {
         m_exit = true;
+    }
+
+    int GetItemsCount()
+    {
+        return m_items.size();
     }
 
 private:

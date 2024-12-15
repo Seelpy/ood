@@ -16,7 +16,6 @@ namespace undo
 
     CompoundEdit::~CompoundEdit()
     {
-        Destroy();
     }
 
     bool CompoundEdit::CanUndo() const

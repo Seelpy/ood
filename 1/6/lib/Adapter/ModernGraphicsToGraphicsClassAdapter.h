@@ -20,7 +20,7 @@ namespace adapter
         void SetColor(uint32_t rgbaColor) override
         {
             float a = ConvertByteTyFloatFromColor(rgbaColor, 3);
-            float r = ConvertByteTyFloatFromColor(rgbaColor, 2);
+            float r = ConvertByteTyFloatFromColor(rgbaColor, 3);
             float g = ConvertByteTyFloatFromColor(rgbaColor, 1);
             float b = ConvertByteTyFloatFromColor(rgbaColor, 0);
 
@@ -46,6 +46,7 @@ namespace adapter
         {
             return float(((rgbaColor >> 8*pos) & 0xFF)) / 255.0f;;
         }
+
         modern_graphics_lib::RGBAColor m_color;
         modern_graphics_lib::Point m_start;
     };

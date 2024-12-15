@@ -50,7 +50,7 @@ public:
         auto copyObservers = m_observers;
 		for (auto & observer : copyObservers)
 		{
-            observer.Update(data);
+            observer->Update(data);
 		}
 	}
 

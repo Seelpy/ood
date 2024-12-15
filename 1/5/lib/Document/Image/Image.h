@@ -1,14 +1,14 @@
 #pragma once
 
 #include "IImage.h"
-
+ // TODO: Команды ресайза должнен быть в картинке
 const int MAX_SIZE = 10000;
 const int MIN_SIZE = 1;
 
 class Image : public IImage
 {
 public:
-    Image(std::string &path, int width, int height)
+    Image(const std::string &path, int width, int height)
             : m_path(std::move(path)), m_width(width), m_height(height)
     {
         validateSize(width);
@@ -34,12 +34,14 @@ public:
 
     void Resize(int width, int height) override
     {
+        validateSize(width);
+        validateSize(height);
         m_width = width;
         m_height = height;
     }
 
 private:
-    void validateSize(int s)
+    static void validateSize(int s)
     {
         if (s >= MIN_SIZE && s <= MAX_SIZE)
         {

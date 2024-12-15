@@ -13,6 +13,16 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googletest)
 
+FetchContent_Declare(
+        Boost
+        URL https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.xz
+        URL_MD5 893b5203b862eb9bbd08553e24ff146a
+        DOWNLOAD_EXTRACT_TIMESTAMP ON
+)
+
+set(BOOST_INCLUDE_LIBRARIES filesystem regex signals2)
+FetchContent_MakeAvailable(Boost)
+
 # Задание 1
 set(SOURCE_FILES_1
         1/cmd/main.cpp
@@ -117,3 +127,46 @@ add_executable(5_test ${TEST_SOURCE_FILES_1})
 target_link_libraries(5_test gmock gtest_main)
 enable_testing()
 add_test(NAME 5_test COMMAND 5_test)
+
+# Задание 7
+set(SOURCE_FILES_1
+        7/cmd/main.cpp
+        7/lib/Observer.h
+        7/lib/WeatherData.h
+)
+
+set(TEST_SOURCE_FILES_1
+        7/test/testProvider.cpp
+        7/lib/Observer.h
+        7/lib/WeatherData.h
+)
+
+add_executable(7 ${SOURCE_FILES_1})
+
+add_executable(7_test ${TEST_SOURCE_FILES_1})
+
+target_link_libraries(7_test gmock gtest_main)
+enable_testing()
+add_test(NAME 7_test COMMAND 7_test)
+
+# Задание 8
+set(SOURCE_FILES_1
+        8/cmd/main.cpp
+        8/lib/Observer.h
+        8/lib/WeatherData.h
+)
+
+set(TEST_SOURCE_FILES_1
+        8/test/testProvider.cpp
+        8/lib/Observer.h
+        8/lib/WeatherData.h
+)
+
+add_executable(8 ${SOURCE_FILES_1})
+
+add_executable(8_test ${TEST_SOURCE_FILES_1})
+
+target_link_libraries(8_test gmock gtest_main Boost::filesystem Boost::regex Boost::signals2)
+target_link_libraries(8 PRIVATE Boost::filesystem Boost::regex Boost::signals2)
+enable_testing()
+add_test(NAME 8_test COMMAND 8_test)

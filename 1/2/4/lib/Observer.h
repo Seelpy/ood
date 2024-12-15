@@ -49,6 +49,8 @@ public:
             auto result = m_priorityToObservers.insert({priority, {}});
             result.first->second.insert(&observer);
             m_observerToPriority[&observer] = priority;
+        } catch (std::exception e) {
+
         }
 	}
 

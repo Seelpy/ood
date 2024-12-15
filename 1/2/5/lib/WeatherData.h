@@ -88,7 +88,7 @@ public:
 private:
     double GetAverageDirection() const
     {
-        double averageDirection = atan2(m_sumY , m_sumX) * 180.0 / M_PI;
+        double averageDirection = atan2(m_sumY, m_sumX) * 180.0 / M_PI;
         return fmod(averageDirection + 360.0, 360.0);
     }
 
@@ -110,10 +110,6 @@ public:
 
 private:
 
-    /* Метод Update сделан приватным, чтобы ограничить возможность его вызова напрямую
-        Классу CObservable он будет доступен все равно, т.к. в интерфейсе IObserver он
-        остается публичным
-    */
     void Update(SWeatherInfo const &data, const IObservable<SWeatherInfo> *observable) override
     {
         std::cout << "Current Location " << GetObserverType(m_weatherDataIn, m_weatherDataOut, observable) << std::endl;
@@ -137,14 +133,10 @@ public:
     {}
 
 private:
-
-    /* Метод Update сделан приватным, чтобы ограничить возможность его вызова напрямую
-    Классу CObservable он будет доступен все равно, т.к. в интерфейсе IObserver он
-    остается публичным
-    */
     void Update(SWeatherInfo const &data, const IObservable<SWeatherInfo> *observable) override
     {
-        std::cout << "Current Location " << GetObserverType(m_weatherDataIn, m_weatherDataOut, observable) << std::endl;
+        auto observerType = GetObserverType(m_weatherDataIn, m_weatherDataOut, observable);
+        std::cout << "Current Location " << observerType << std::endl;
         m_statisticsTemperature.Add(data.temperature);
         m_statisticsHumidity.Add(data.humidity);
         m_statisticsPressure.Add(data.pressure);
@@ -153,7 +145,11 @@ private:
         m_statisticsTemperature.Write("Temp");
         m_statisticsHumidity.Write("Hum");
         m_statisticsPressure.Write("Pressure");
-        m_statisticsWind.Write();
+
+        if (observerType == "outside")
+        {
+            m_statisticsWind.Write();
+        }
     }
 
     CSequenceStatistics m_statisticsTemperature;

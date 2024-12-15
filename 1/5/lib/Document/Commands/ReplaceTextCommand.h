@@ -23,7 +23,10 @@ public:
     {
         if (auto paragraph = m_items.at(m_index).GetParagraph(); paragraph != nullptr)
         {
-            m_oldText = paragraph->GetText();
+            if (m_oldText.empty())
+            {
+                m_oldText = paragraph->GetText();
+            }
             paragraph->SetText(m_newText);
         }
         else
@@ -46,12 +49,13 @@ public:
 
     bool ReplaceEditImpl(const undo::IUndoableEditPtr &edit) override
     {
-        if (auto otherReplace = std::dynamic_pointer_cast<ReplaceTextCommand>(edit); otherReplace && otherReplace->m_index == m_index &&
-                                                                                     otherReplace->m_newText ==
-                                                                                     m_oldText)
+        if (auto otherReplace = std::dynamic_pointer_cast<ReplaceTextCommand>(edit); otherReplace)
         {
-            m_oldText = otherReplace->m_oldText;
-            return true;
+            if (otherReplace->m_index == m_index)
+            {
+                m_oldText = otherReplace->m_oldText;
+                return true;
+            }
         }
         return false;
     }

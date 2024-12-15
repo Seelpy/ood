@@ -23,8 +23,65 @@
 //Value Computed by CMake
 2_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2
 
+//Disable usage of arc4random API in Boost.Filesystem
+BOOST_FILESYSTEM_DISABLE_ARC4RANDOM:BOOL=OFF
+
+//Disable usage of BCrypt API in Boost.Filesystem
+BOOST_FILESYSTEM_DISABLE_BCRYPT:BOOL=OFF
+
+//Disable usage of copy_file_range API in Boost.Filesystem
+BOOST_FILESYSTEM_DISABLE_COPY_FILE_RANGE:BOOL=OFF
+
+//Disable usage of getrandom API in Boost.Filesystem
+BOOST_FILESYSTEM_DISABLE_GETRANDOM:BOOL=OFF
+
+//Disable usage of sendfile API in Boost.Filesystem
+BOOST_FILESYSTEM_DISABLE_SENDFILE:BOOL=OFF
+
+//Disable usage of statx API in Boost.Filesystem
+BOOST_FILESYSTEM_DISABLE_STATX:BOOL=OFF
+
+//Use WASI under emscripten in Boost.Filesystem
+BOOST_FILESYSTEM_EMSCRIPTEN_USE_WASI:BOOL=OFF
+
+//Disable deprecated functionality of Boost.Filesystem
+BOOST_FILESYSTEM_NO_DEPRECATED:BOOL=OFF
+
+//Boost.Regex: Enable Standalone Mode (i.e. no Boost dependencies)
+BOOST_REGEX_STANDALONE:BOOL=OFF
+
 //Builds the googlemock subproject
 BUILD_GMOCK:BOOL=ON
+
+//Value Computed by CMake
+BoostFilesystem_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/filesystem
+
+//Value Computed by CMake
+BoostFilesystem_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+BoostFilesystem_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/filesystem
+
+//Value Computed by CMake
+Boost_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build
+
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=Boost_DIR-NOTFOUND
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=Boost_INCLUDE_DIR-NOTFOUND
+
+//Value Computed by CMake
+Boost_IS_TOP_LEVEL:STATIC=OFF
+
+//Boost signals2 library (debug)
+Boost_SIGNALS2_LIBRARY_DEBUG:FILEPATH=Boost_SIGNALS2_LIBRARY_DEBUG-NOTFOUND
+
+//Boost signals2 library (release)
+Boost_SIGNALS2_LIBRARY_RELEASE:FILEPATH=Boost_SIGNALS2_LIBRARY_RELEASE-NOTFOUND
+
+//Value Computed by CMake
+Boost_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
@@ -299,11 +356,18 @@ FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
 FETCHCONTENT_QUIET:BOOL=ON
 
 //When not empty, overrides where to find pre-populated content
+// for Boost
+FETCHCONTENT_SOURCE_DIR_BOOST:PATH=
+
+//When not empty, overrides where to find pre-populated content
 // for googletest
 FETCHCONTENT_SOURCE_DIR_GOOGLETEST:PATH=
 
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
+
+//Enables UPDATE_DISCONNECTED behavior just for population of Boost
+FETCHCONTENT_UPDATES_DISCONNECTED_BOOST:BOOL=OFF
 
 //Enables UPDATE_DISCONNECTED behavior just for population of googletest
 FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
@@ -312,9 +376,438 @@ FETCHCONTENT_UPDATES_DISCONNECTED_GOOGLETEST:BOOL=OFF
 // added to the build.
 GTEST_HAS_ABSL:BOOL=OFF
 
+//ICU data library (debug)
+ICU_DATA_LIBRARY_DEBUG:FILEPATH=ICU_DATA_LIBRARY_DEBUG-NOTFOUND
+
+//ICU data library (release)
+ICU_DATA_LIBRARY_RELEASE:FILEPATH=ICU_DATA_LIBRARY_RELEASE-NOTFOUND
+
+//ICU derb executable
+ICU_DERB_EXECUTABLE:FILEPATH=ICU_DERB_EXECUTABLE-NOTFOUND
+
+//ICU genbrk executable
+ICU_GENBRK_EXECUTABLE:FILEPATH=ICU_GENBRK_EXECUTABLE-NOTFOUND
+
+//ICU genccode executable
+ICU_GENCCODE_EXECUTABLE:FILEPATH=ICU_GENCCODE_EXECUTABLE-NOTFOUND
+
+//ICU gencfu executable
+ICU_GENCFU_EXECUTABLE:FILEPATH=ICU_GENCFU_EXECUTABLE-NOTFOUND
+
+//ICU gencmn executable
+ICU_GENCMN_EXECUTABLE:FILEPATH=ICU_GENCMN_EXECUTABLE-NOTFOUND
+
+//ICU gencnval executable
+ICU_GENCNVAL_EXECUTABLE:FILEPATH=ICU_GENCNVAL_EXECUTABLE-NOTFOUND
+
+//ICU gendict executable
+ICU_GENDICT_EXECUTABLE:FILEPATH=ICU_GENDICT_EXECUTABLE-NOTFOUND
+
+//ICU gennorm2 executable
+ICU_GENNORM2_EXECUTABLE:FILEPATH=ICU_GENNORM2_EXECUTABLE-NOTFOUND
+
+//ICU genrb executable
+ICU_GENRB_EXECUTABLE:FILEPATH=ICU_GENRB_EXECUTABLE-NOTFOUND
+
+//ICU gensprep executable
+ICU_GENSPREP_EXECUTABLE:FILEPATH=ICU_GENSPREP_EXECUTABLE-NOTFOUND
+
+//ICU i18n library (debug)
+ICU_I18N_LIBRARY_DEBUG:FILEPATH=ICU_I18N_LIBRARY_DEBUG-NOTFOUND
+
+//ICU i18n library (release)
+ICU_I18N_LIBRARY_RELEASE:FILEPATH=ICU_I18N_LIBRARY_RELEASE-NOTFOUND
+
+//ICU icu-config executable
+ICU_ICU-CONFIG_EXECUTABLE:FILEPATH=ICU_ICU-CONFIG_EXECUTABLE-NOTFOUND
+
+//ICU icuinfo executable
+ICU_ICUINFO_EXECUTABLE:FILEPATH=ICU_ICUINFO_EXECUTABLE-NOTFOUND
+
+//ICU icupkg executable
+ICU_ICUPKG_EXECUTABLE:FILEPATH=ICU_ICUPKG_EXECUTABLE-NOTFOUND
+
+//ICU include directory
+ICU_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include
+
+//ICU makeconv executable
+ICU_MAKECONV_EXECUTABLE:FILEPATH=ICU_MAKECONV_EXECUTABLE-NOTFOUND
+
+//ICU Makefile.inc data file
+ICU_MAKEFILE_INC:FILEPATH=ICU_MAKEFILE_INC-NOTFOUND
+
+//ICU pkgdata executable
+ICU_PKGDATA_EXECUTABLE:FILEPATH=ICU_PKGDATA_EXECUTABLE-NOTFOUND
+
+//ICU pkgdata.inc data file
+ICU_PKGDATA_INC:FILEPATH=ICU_PKGDATA_INC-NOTFOUND
+
+//ICU uconv executable
+ICU_UCONV_EXECUTABLE:FILEPATH=ICU_UCONV_EXECUTABLE-NOTFOUND
+
+//ICU uc library (debug)
+ICU_UC_LIBRARY_DEBUG:FILEPATH=ICU_UC_LIBRARY_DEBUG-NOTFOUND
+
+//ICU uc library (release)
+ICU_UC_LIBRARY_RELEASE:FILEPATH=ICU_UC_LIBRARY_RELEASE-NOTFOUND
+
 //Enable installation of googletest. (Projects embedding googletest
 // may want to turn this OFF.)
 INSTALL_GTEST:BOOL=ON
+
+//Value Computed by CMake
+boost_align_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/align
+
+//Value Computed by CMake
+boost_align_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_align_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/align
+
+//Value Computed by CMake
+boost_assert_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/assert
+
+//Value Computed by CMake
+boost_assert_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_assert_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/assert
+
+//Value Computed by CMake
+boost_atomic_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/atomic
+
+//Value Computed by CMake
+boost_atomic_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_atomic_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/atomic
+
+//Value Computed by CMake
+boost_bind_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/bind
+
+//Value Computed by CMake
+boost_bind_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_bind_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/bind
+
+//Value Computed by CMake
+boost_concept_check_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/concept_check
+
+//Value Computed by CMake
+boost_concept_check_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_concept_check_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/concept_check
+
+//Value Computed by CMake
+boost_config_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/config
+
+//Value Computed by CMake
+boost_config_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_config_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/config
+
+//Value Computed by CMake
+boost_container_hash_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/container_hash
+
+//Value Computed by CMake
+boost_container_hash_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_container_hash_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/container_hash
+
+//Value Computed by CMake
+boost_core_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/core
+
+//Value Computed by CMake
+boost_core_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_core_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/core
+
+//Value Computed by CMake
+boost_describe_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/describe
+
+//Value Computed by CMake
+boost_describe_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_describe_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/describe
+
+//Value Computed by CMake
+boost_detail_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/detail
+
+//Value Computed by CMake
+boost_detail_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_detail_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/detail
+
+//Dependencies for the target
+boost_filesystem_LIB_DEPENDS:STATIC=general;Boost::io;general;Boost::iterator;general;Boost::smart_ptr;general;Boost::system;general;Boost::type_traits;general;Boost::predef;general;Boost::atomic;
+
+//Value Computed by CMake
+boost_function_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/function
+
+//Value Computed by CMake
+boost_function_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_function_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/function
+
+//Value Computed by CMake
+boost_function_types_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/function_types
+
+//Value Computed by CMake
+boost_function_types_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_function_types_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/function_types
+
+//Value Computed by CMake
+boost_functional_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/functional
+
+//Value Computed by CMake
+boost_functional_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_functional_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/functional
+
+//Value Computed by CMake
+boost_fusion_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/fusion
+
+//Value Computed by CMake
+boost_fusion_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_fusion_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/fusion
+
+//Value Computed by CMake
+boost_headers_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/headers
+
+//Value Computed by CMake
+boost_headers_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_headers_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/headers
+
+//Value Computed by CMake
+boost_integer_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/integer
+
+//Value Computed by CMake
+boost_integer_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_integer_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/integer
+
+//Value Computed by CMake
+boost_io_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/io
+
+//Value Computed by CMake
+boost_io_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_io_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/io
+
+//Value Computed by CMake
+boost_iterator_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/iterator
+
+//Value Computed by CMake
+boost_iterator_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_iterator_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/iterator
+
+//Value Computed by CMake
+boost_move_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/move
+
+//Value Computed by CMake
+boost_move_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_move_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/move
+
+//Value Computed by CMake
+boost_mp11_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/mp11
+
+//Value Computed by CMake
+boost_mp11_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_mp11_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/mp11
+
+//Value Computed by CMake
+boost_mpl_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/mpl
+
+//Value Computed by CMake
+boost_mpl_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_mpl_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/mpl
+
+//Value Computed by CMake
+boost_optional_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/optional
+
+//Value Computed by CMake
+boost_optional_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_optional_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/optional
+
+//Value Computed by CMake
+boost_parameter_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/parameter
+
+//Value Computed by CMake
+boost_parameter_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_parameter_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/parameter
+
+//Value Computed by CMake
+boost_predef_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/predef
+
+//Value Computed by CMake
+boost_predef_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_predef_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/predef
+
+//Value Computed by CMake
+boost_preprocessor_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/preprocessor
+
+//Value Computed by CMake
+boost_preprocessor_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_preprocessor_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/preprocessor
+
+//Value Computed by CMake
+boost_regex_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/regex
+
+//Value Computed by CMake
+boost_regex_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_regex_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/regex
+
+//Value Computed by CMake
+boost_signals2_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/signals2
+
+//Value Computed by CMake
+boost_signals2_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_signals2_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/signals2
+
+//Value Computed by CMake
+boost_smart_ptr_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/smart_ptr
+
+//Value Computed by CMake
+boost_smart_ptr_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_smart_ptr_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/smart_ptr
+
+//Value Computed by CMake
+boost_static_assert_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/static_assert
+
+//Value Computed by CMake
+boost_static_assert_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_static_assert_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/static_assert
+
+//Value Computed by CMake
+boost_system_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/system
+
+//Value Computed by CMake
+boost_system_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_system_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/system
+
+//Value Computed by CMake
+boost_throw_exception_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/throw_exception
+
+//Value Computed by CMake
+boost_throw_exception_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_throw_exception_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/throw_exception
+
+//Value Computed by CMake
+boost_tuple_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/tuple
+
+//Value Computed by CMake
+boost_tuple_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_tuple_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/tuple
+
+//Value Computed by CMake
+boost_type_index_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/type_index
+
+//Value Computed by CMake
+boost_type_index_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_type_index_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/type_index
+
+//Value Computed by CMake
+boost_type_traits_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/type_traits
+
+//Value Computed by CMake
+boost_type_traits_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_type_traits_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/type_traits
+
+//Value Computed by CMake
+boost_typeof_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/typeof
+
+//Value Computed by CMake
+boost_typeof_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_typeof_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/typeof
+
+//Value Computed by CMake
+boost_utility_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/utility
+
+//Value Computed by CMake
+boost_utility_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_utility_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/utility
+
+//Value Computed by CMake
+boost_variant2_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/variant2
+
+//Value Computed by CMake
+boost_variant2_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_variant2_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/variant2
+
+//Value Computed by CMake
+boost_variant_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/variant
+
+//Value Computed by CMake
+boost_variant_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_variant_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/variant
+
+//Value Computed by CMake
+boost_winapi_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-build/libs/winapi
+
+//Value Computed by CMake
+boost_winapi_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+boost_winapi_SOURCE_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/winapi
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/googletest-build/googlemock
@@ -376,6 +869,42 @@ gtest_main_LIB_DEPENDS:STATIC=general;gtest;
 # INTERNAL cache entries
 ########################
 
+//Test BOOST_ATOMIC_TARGET_X86
+BOOST_ATOMIC_TARGET_X86:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_CXX20_ATOMIC_REF
+BOOST_FILESYSTEM_HAS_CXX20_ATOMIC_REF:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_DIRENT_D_TYPE
+BOOST_FILESYSTEM_HAS_DIRENT_D_TYPE:INTERNAL=1
+//Test BOOST_FILESYSTEM_HAS_FDOPENDIR_NOFOLLOW
+BOOST_FILESYSTEM_HAS_FDOPENDIR_NOFOLLOW:INTERNAL=1
+//Test BOOST_FILESYSTEM_HAS_INIT_PRIORITY
+BOOST_FILESYSTEM_HAS_INIT_PRIORITY:INTERNAL=1
+//Test BOOST_FILESYSTEM_HAS_POSIX_AT_APIS
+BOOST_FILESYSTEM_HAS_POSIX_AT_APIS:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_STATX
+BOOST_FILESYSTEM_HAS_STATX:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_STATX_SYSCALL
+BOOST_FILESYSTEM_HAS_STATX_SYSCALL:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_STAT_ST_BIRTHTIMENSEC
+BOOST_FILESYSTEM_HAS_STAT_ST_BIRTHTIMENSEC:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_STAT_ST_BIRTHTIMESPEC
+BOOST_FILESYSTEM_HAS_STAT_ST_BIRTHTIMESPEC:INTERNAL=1
+//Test BOOST_FILESYSTEM_HAS_STAT_ST_BLKSIZE
+BOOST_FILESYSTEM_HAS_STAT_ST_BLKSIZE:INTERNAL=1
+//Test BOOST_FILESYSTEM_HAS_STAT_ST_MTIM
+BOOST_FILESYSTEM_HAS_STAT_ST_MTIM:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_STAT_ST_MTIMENSEC
+BOOST_FILESYSTEM_HAS_STAT_ST_MTIMENSEC:INTERNAL=
+//Test BOOST_FILESYSTEM_HAS_STAT_ST_MTIMESPEC
+BOOST_FILESYSTEM_HAS_STAT_ST_MTIMESPEC:INTERNAL=1
+//List of all Boost library include paths
+BOOST_LIBRARY_INCLUDES:INTERNAL=/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/accumulators/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/algorithm/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/align/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/any/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/array/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/asio/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/assert/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/assign/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/atomic/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/beast/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/bimap/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/bind/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/callable_traits/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/chrono/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/circular_buffer/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/cobalt/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/compat/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/compatibility/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/compute/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/concept_check/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/config/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/container/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/container_hash/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/context/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/contract/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/conversion/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/convert/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/core/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/coroutine/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/coroutine2/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/crc/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/date_time/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/describe/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/detail/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/dll/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/dynamic_bitset/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/endian/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/exception/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/fiber/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/filesystem/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/flyweight/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/foreach/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/format/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/function/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/function_types/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/functional/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/fusion/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/geometry/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/gil/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/graph/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/graph_parallel/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/hana/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/headers/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/heap/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/histogram/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/hof/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/icl/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/integer/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/interprocess/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/intrusive/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/io/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/iostreams/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/iterator/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/json/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/lambda/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/lambda2/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/leaf/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/lexical_cast/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/local_function/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/locale/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/lockfree/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/log/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/logic/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/math/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/metaparse/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/move/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/mp11/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/mpi/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/mpl/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/msm/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/multi_array/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/multi_index/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/multiprecision/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/mysql/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/nowide/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/optional/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/outcome/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/parameter/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/parameter_python/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/pfr/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/phoenix/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/poly_collection/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/polygon/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/pool/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/predef/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/preprocessor/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/process/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/program_options/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/property_map/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/property_map_parallel/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/property_tree/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/proto/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/ptr_container/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/python/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/qvm/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/random/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/range/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/ratio/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/rational/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/redis/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/regex/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/safe_numerics/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/scope_exit/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/serialization/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/signals2/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/smart_ptr/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/sort/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/spirit/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/stacktrace/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/statechart/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/static_assert/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/static_string/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/stl_interfaces/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/system/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/test/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/thread/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/throw_exception/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/timer/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/tokenizer/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/tti/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/tuple/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/type_erasure/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/type_index/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/type_traits/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/typeof/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/units/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/unordered/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/url/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/utility/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/uuid/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/variant/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/variant2/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/vmd/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/wave/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/winapi/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/xpressive/include;/Users/maksimveselov/Projects/ood/1/2/cmake-build-debug/_deps/boost-src/libs/yap/include
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SIGNALS2_LIBRARY_DEBUG
+Boost_SIGNALS2_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SIGNALS2_LIBRARY_RELEASE
+Boost_SIGNALS2_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -498,7 +1027,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=45
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -547,6 +1076,54 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/opt/homebrew/Frameworks/Python.framework/Versions/3.12/bin/python3.12][cfound components: Interpreter ][v3.12.6()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: ICU_DATA_LIBRARY_DEBUG
+ICU_DATA_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_DATA_LIBRARY_RELEASE
+ICU_DATA_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_DERB_EXECUTABLE
+ICU_DERB_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENBRK_EXECUTABLE
+ICU_GENBRK_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENCCODE_EXECUTABLE
+ICU_GENCCODE_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENCFU_EXECUTABLE
+ICU_GENCFU_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENCMN_EXECUTABLE
+ICU_GENCMN_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENCNVAL_EXECUTABLE
+ICU_GENCNVAL_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENDICT_EXECUTABLE
+ICU_GENDICT_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENNORM2_EXECUTABLE
+ICU_GENNORM2_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENRB_EXECUTABLE
+ICU_GENRB_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_GENSPREP_EXECUTABLE
+ICU_GENSPREP_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_I18N_LIBRARY_DEBUG
+ICU_I18N_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_I18N_LIBRARY_RELEASE
+ICU_I18N_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_ICU-CONFIG_EXECUTABLE
+ICU_ICU-CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_ICUINFO_EXECUTABLE
+ICU_ICUINFO_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_ICUPKG_EXECUTABLE
+ICU_ICUPKG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_MAKECONV_EXECUTABLE
+ICU_MAKECONV_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_MAKEFILE_INC
+ICU_MAKEFILE_INC-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_PKGDATA_EXECUTABLE
+ICU_PKGDATA_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_PKGDATA_INC
+ICU_PKGDATA_INC-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_UCONV_EXECUTABLE
+ICU_UCONV_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_UC_LIBRARY_DEBUG
+ICU_UC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ICU_UC_LIBRARY_RELEASE
+ICU_UC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 //Compiler reason failure

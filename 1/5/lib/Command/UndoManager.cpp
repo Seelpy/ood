@@ -1,6 +1,8 @@
 #include "UndoManager.h"
 #include <cassert>
 
+// TODO 10 комманд
+// TODO Пометка удаления
 namespace undo
 {
 
@@ -113,6 +115,13 @@ namespace undo
     {
         if (m_indexOfNextAdd < m_edits.size())
         {
+            size_t countToRemove = m_edits.size() - m_indexOfNextAdd;
+
+            for (size_t i = 0; i < countToRemove; ++i)
+            {
+                auto destroyed = m_edits[m_indexOfNextAdd + i];
+                destroyed->Destroy();
+            }
             m_edits.resize(m_indexOfNextAdd);
         }
 

@@ -93,17 +93,17 @@ void ExpectClassAdapterDrawEq(const std::vector<mgl::Point>& points, uint32_t co
 void RunAdapterTests(const std::function<void(const std::vector<mgl::Point>&, uint32_t)>& eqFunc)
 {
     {
-        uint32_t color = 0xFF5733FF;
+        uint32_t color = 0x01234567;
         eqFunc({}, color);
     }
 
     {
-        uint32_t color = 0x000000;
+        uint32_t color = 0x01234567;
         eqFunc({{1, 1}}, color);
     }
 
     {
-        uint32_t color = 0xFF5733FF;
+        uint32_t color = 0x01234567;
         std::vector<mgl::Point> points;
         for (int i = 10; i < 100; i += 10)
         {

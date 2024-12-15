@@ -5,6 +5,24 @@
 #include "./../ConstDocumentItem.h"
 #include <sstream>
 
+std::string HtmlEncode(const std::string &text)
+{
+    std::string encoded;
+    for (char c : text)
+    {
+        switch (c)
+        {
+            case '<': encoded += "&lt;"; break;
+            case '>': encoded += "&gt;"; break;
+            case '"': encoded += "&quot;"; break;
+            case '\'': encoded += "&apos;"; break;
+            case '&': encoded += "&amp;"; break;
+            default: encoded += c; break;
+        }
+    }
+    return encoded;
+}
+
 std::string FormatDocumentItemToHTML(ConstDocumentItem item)
 {
     if (auto image = item.GetImage(); image != nullptr)
@@ -14,12 +32,12 @@ std::string FormatDocumentItemToHTML(ConstDocumentItem item)
     }
     if (auto paragraph = item.GetParagraph(); paragraph != nullptr)
     {
-        return "<p>" + paragraph->GetText() + "</p>";
+        return "<p>" + HtmlEncode(paragraph->GetText()) + "</p>";
     }
     return "";
 }
 
-std::string FormatDocumentToHTML(std::string title, std::vector<ConstDocumentItem> items)
+std::string FormatDocumentToHTML(const std::string& title, const std::vector<ConstDocumentItem>& items)
 {
     std::ostringstream result;
     result << "<!DOCTYPE html>" << std::endl

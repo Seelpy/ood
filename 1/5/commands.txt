@@ -1,0 +1,32 @@
+// Пример с скриптом внутри
+ii end ./data/1.bmp 100 100
+ip end <script>alert()</script>
+ii end ./data/1.bmp 500 500
+st Hello world
+s 1.html
+
+// Склейка замены тектса
+ip 0 text
+rt 0 text1
+rt 0 text2
+l
+u
+l
+r
+l
+
+
+// Склейка ресайза
+ii end ./data/1.bmp 100 100
+rs 0 200 200
+rs 0 300 300
+l
+u
+l
+r
+l
+
+// Удаление ненужных картинок если не сохранен файл
+ii end ./data/1.bmp 100 100
+ip end <script>alert()</script>
+st Hello world

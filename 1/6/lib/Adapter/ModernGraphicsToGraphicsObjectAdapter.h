@@ -21,7 +21,7 @@ namespace adapter
         void SetColor(uint32_t rgbaColor) override
         {
             float a = ConvertByteTyFloatFromColor(rgbaColor, 3);
-            float r = ConvertByteTyFloatFromColor(rgbaColor, 2); // TODO: недостатоно хорошо адаптера
+            float r = ConvertByteTyFloatFromColor(rgbaColor, 0); // TODO: недостатоно хорошо адаптера
             float g = ConvertByteTyFloatFromColor(rgbaColor, 1);
             float b = ConvertByteTyFloatFromColor(rgbaColor, 0);
 

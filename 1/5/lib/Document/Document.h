@@ -16,10 +16,18 @@
 #include "./HTML/utils.h"
 #include <fstream>
 #include "./Util/FileCopy.h"
+#include "exception"
+
+const std::string IMAGE_DIR = "./images/";
 
 class Document : public IDocument
 {
 public:
+    ~Document()
+    {
+        ClearImagesIfNeed();
+    }
+
     void InsertParagraph(
             const std::string &text,
             std::optional<size_t> position = std::nullopt) override
@@ -43,8 +51,18 @@ public:
             const std::string &path, int w, int h,
             std::optional<size_t> position = std::nullopt) override
     {
-        auto copyImagePath = CopyFile(path, "./images/");
-        AddAndExecuteCommand(std::make_shared<InsertImageCommand>(m_documentItems, position, copyImagePath, w, h));
+        auto copyImagePath = CopyFile(path, IMAGE_DIR);
+        try
+        {
+            AddAndExecuteCommand(std::make_shared<InsertImageCommand>(m_documentItems, position, copyImagePath, w, h));
+        } catch (const std::invalid_argument& e)
+        {
+            if (std::filesystem::exists(copyImagePath))
+            {
+                std::filesystem::remove(copyImagePath);
+            }
+            throw  e;
+        }
     }
 
     [[nodiscard]] size_t GetItemsCount() const override
@@ -105,7 +123,7 @@ public:
         m_stateManager.Redo();
     }
 
-    void Save(const std::string &path) const override
+    void Save(const std::string &path) override
     {
         std::ofstream outFile(path);
         if (!outFile)
@@ -115,6 +133,7 @@ public:
         auto consts = GetConstItems();
         outFile << FormatDocumentToHTML(m_title, consts);
         outFile.close();
+        m_isSaved = true;
     }
 
     std::vector<ConstDocumentItem> List() override
@@ -123,7 +142,7 @@ public:
     }
 
 private:
-    void AddAndExecuteCommand(const undo::IUndoableEditPtr& command)
+    void AddAndExecuteCommand(const undo::IUndoableEditPtr &command)
     {
         m_stateManager.AddEdit(command);
         m_stateManager.Redo();
@@ -142,7 +161,26 @@ private:
         return constDocumentItems;
     }
 
+    void ClearImagesIfNeed()
+    {
+        if (m_isSaved)
+        {
+            return;
+        }
+        for (const auto& item :GetConstItems())
+        {
+            if (auto image = item.GetImage(); image != nullptr)
+            {
+                if (std::filesystem::exists(image->GetPath()))
+                {
+                    std::filesystem::remove(image->GetPath());
+                }
+            }
+        }
+    }
+
     std::string m_title;
     undo::UndoManager m_stateManager;
     std::vector<DocumentItem> m_documentItems;
+    bool m_isSaved = false;
 };

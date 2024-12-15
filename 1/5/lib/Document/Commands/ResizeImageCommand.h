@@ -24,8 +24,11 @@ public:
     {
         if (auto image = m_items.at(m_index).GetImage(); image != nullptr)
         {
-            m_oldW = image->GetWidth();
-            //m_oldH = image->GetHeight();
+            if (m_oldW == 0 || m_oldH == 0)
+            {
+                m_oldW = image->GetWidth();
+                m_oldH = image->GetHeight();
+            }
             image->Resize(m_newW, m_newH);
         }
         else
@@ -48,19 +51,22 @@ public:
 
     bool ReplaceEditImpl(const undo::IUndoableEditPtr& edit) override
     {
-        if (auto otherReplace = std::dynamic_pointer_cast<ResizeImageCommand>(edit); otherReplace && otherReplace->m_index == m_index && otherReplace->m_newH == m_newH && otherReplace->m_newW == m_newW )
+        if (auto otherReplace = std::dynamic_pointer_cast<ResizeImageCommand>(edit); otherReplace)
         {
-            m_oldW = otherReplace->m_oldW;
-            m_oldH = otherReplace->m_oldH;
-            return true;
+            if (otherReplace->m_index == m_index)
+            {
+                m_oldW = otherReplace->m_oldW;
+                m_oldH = otherReplace->m_oldH;
+                return true;
+            }
         }
         return false;
     }
 private:
     std::vector<DocumentItem> & m_items;
     size_t m_index;
-    unsigned int m_oldW;
-    unsigned int m_oldH;
-    unsigned int m_newW;
-    unsigned int m_newH;
+    unsigned int m_oldW = 0;
+    unsigned int m_oldH = 0;
+    unsigned int m_newW = 0;
+    unsigned int m_newH = 0;
 };

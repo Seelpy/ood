@@ -17,19 +17,22 @@ public:
 
     void RedoImpl() override
     {
-        if (m_index.has_value())
-        {
-            auto index = m_index.value();
-            if (index >= m_items.size())
-            {
-                throw std::invalid_argument("Out of range by position");
-            }
-            m_items.insert(m_items.begin() + m_index.value(), 1, m_item);
-        }
-        else
+        if (!m_index.has_value())
         {
             m_items.push_back(m_item);
+            return;
         }
+        auto index = m_index.value();
+        if (index > m_items.size())
+        {
+            throw std::invalid_argument("Out of range by position");
+        }
+        if (!m_items.empty())
+        {
+            m_items.insert(m_items.begin() + m_index.value(), 1, m_item);
+            return;
+        }
+        m_items.push_back(m_item);
     }
 
     void UndoImpl() override

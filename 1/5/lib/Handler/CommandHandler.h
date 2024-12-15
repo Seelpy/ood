@@ -79,7 +79,7 @@ private:
         auto items = m_document.List();
         auto title = m_document.GetTitle();
         std::cout << "Title: " << title << std::endl;
-        int i = 1;
+        int i = 0;
         for (auto item: items)
         {
             std::cout << i << ". ";
