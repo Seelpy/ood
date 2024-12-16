@@ -83,10 +83,18 @@ set(TEST_SOURCE_FILES_1
         test/test.cpp
 )
 
-add_executable(1)
+add_executable(1
+        src/view/menu/Menu.h
+        src/view/BaseView.h
+        src/presenter/BasePresenter.h
+)
 target_sources(1 PRIVATE ${SOURCE_FILES_1} ${SOURCE_FILES_2})
 
-add_executable(1_test)
+add_executable(1_test
+        src/view/menu/Menu.h
+        src/view/BaseView.h
+        src/presenter/BasePresenter.h
+)
 target_sources(1_test PRIVATE ${TEST_SOURCE_FILES_1}  ${SOURCE_FILES_2})
 
 target_link_libraries(1_test gtest_main gmock gtest sfml-system sfml-window sfml-graphics Boost::filesystem Boost::regex Boost::signals2)

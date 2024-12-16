@@ -1,15 +1,17 @@
 #pragma once
 
 #include <utility>
-
+#include "./../BaseView.h"
 #include "./../IView.h"
 #include "IShapeViewStrategy.h"
 
-class ShapeView : public IView
+class ShapeView : public BaseView
 {
 public:
-    ShapeView(IShapeViewStrategyPtr strategy, Rect frame, RGBAColor fillColor, RGBAColor lineColor, unsigned int thickness)
-            : m_strategy(std::move(strategy)), m_frame(frame)
+    ShapeView(
+            IShapeViewStrategyPtr strategy, Rect frame, RGBAColor fillColor, RGBAColor lineColor,
+            unsigned int thickness)
+            : m_strategy(std::move(strategy)), m_frame(frame), BaseView(frame)
     {
         m_fillColor = fillColor;
         m_lineColor = lineColor;
@@ -23,17 +25,17 @@ public:
         m_strategy->Show(canvas, m_frame, m_fillColor, m_lineColor, m_thickness);
     }
 
-    void SetFrame(const Rect& frame)
+    void SetFrame(const Rect &frame)
     {
         m_frame = frame;
     }
 
-    void SetFillColor(const RGBAColor& fillColor)
+    void SetFillColor(const RGBAColor &fillColor)
     {
         m_fillColor = fillColor;
     }
 
-    void SetLineColor(const RGBAColor& lineColor)
+    void SetLineColor(const RGBAColor &lineColor)
     {
         m_lineColor = lineColor;
     }

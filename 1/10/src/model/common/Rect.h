@@ -19,7 +19,7 @@ public:
     }
 
     Point LeftDown() {
-        return {m_leftTop.X(), m_leftTop.Y() - m_size.GetHeight()};
+        return {m_leftTop.X(), m_leftTop.Y() + m_size.GetHeight()};
     }
 
     Point RightTop() {
@@ -27,11 +27,16 @@ public:
     }
 
     Point RightDown() {
-        return {m_leftTop.X() + m_size.GetWidth() , m_leftTop.Y() - m_size.GetHeight()};
+        return {m_leftTop.X() + m_size.GetWidth() , m_leftTop.Y() + m_size.GetHeight()};
     }
 
     Size GetSize() {
         return m_size;
+    }
+
+    bool In(const Point& p) {
+        return m_leftTop.X() <= p.X() && m_leftTop.X() + m_size.GetWidth() >= p.X() &&
+                m_leftTop.Y() <= p.Y() && m_leftTop.Y() + m_size.GetHeight() >= p.Y();
     }
 private:
     static void Validate(Point leftTop, Size size) {

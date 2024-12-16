@@ -9,3 +9,5 @@ public:
 
     virtual IViewPtr GetView() = 0;
 };
+
+typedef std::shared_ptr<IPresenter> IPresenterPtr;

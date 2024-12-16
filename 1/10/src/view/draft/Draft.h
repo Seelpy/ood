@@ -1,23 +1,31 @@
 #pragma once
 
 #include "./../IView.h"
+#include "./../BaseView.h"
+#include <utility>
 #include <vector>
 
-class DraftView : public IView
+class DraftView : public BaseView
 {
 public:
-    DraftView(Rect frame, std::vector<IViewPtr> shapes) : m_shapes(shapes), m_frame(frame)
+    DraftView(Rect frame, std::vector<IViewPtr> shapes) : m_shapes(std::move(shapes)), m_frame(frame), BaseView(frame)
     {
 
     }
 
-    void Show(ICanvas &canvas)
+    void Show(ICanvas &canvas) override
     {
         canvas.DrawClosedPolyLine({m_frame.LeftTop(), m_frame.RightTop(), m_frame.RightDown(), m_frame.LeftDown()});
-        for (auto shape: m_shapes)
+        for (const auto& shape: m_shapes)
         {
             shape->Show(canvas);
         }
+    }
+
+protected:
+    std::vector<IViewPtr> ListViewsImpl() override
+    {
+        return m_shapes;
     }
 
 private:
