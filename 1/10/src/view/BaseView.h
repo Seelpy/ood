@@ -1,19 +1,19 @@
 #pragma once
 
-#include "./../model/common/Rect.h"
+#include "./../lib/common/Rect.h"
 #include <boost/signals2.hpp>
-#include "./../model/common/Point.h"
+#include "./../lib/common/Point.h"
 #include <functional>
 #include "IView.h"
 
 class BaseView : public IView
 {
 public:
-    explicit BaseView(Rect frame) : m_frame(frame)
+    explicit BaseView(common::Rect frame) : m_frame(frame)
     {
     }
 
-    void OnMouseDown(const Point &p) override
+    void OnMouseDown(const common::Point &p) override
     {
         if (In(p))
         {
@@ -25,7 +25,7 @@ public:
         }
     }
 
-    void OnMouseUp(const Point &p) override
+    void OnMouseUp(const common::Point &p) override // TODO: если поташим то может up не у той фигуры поставиться
     {
         if (In(p))
         {
@@ -37,7 +37,7 @@ public:
         }
     }
 
-    void OnMouseDrag(const Point &p1, const Point &p2) override
+    void OnMouseDrag(const common::Point &p1, const common::Point &p2) override
     {
         if (In(p1))
         {
@@ -49,24 +49,29 @@ public:
         }
     }
 
-    void RegisterObserverOnMouseDown(std::function<void(const Point &)> &f) override
+    void RegisterObserverOnMouseDown(std::function<void(const common::Point &)> &f) override
     {
         m_observerOnMouseDown.connect(f);
     }
 
-    void RegisterObserverOnMouseUp(std::function<void(const Point &)> &f) override
+    void RegisterObserverOnMouseUp(std::function<void(const common::Point &)> &f) override
     {
         m_observerOnMouseDown.connect(f);
     }
 
-    void RegisterObserverOnMouseDrag(std::function<void(const Point &, const Point &)> &f) override
+    void RegisterObserverOnMouseDrag(std::function<void(const common::Point &, const common::Point &)> &f) override
     {
         m_observerOnMouseDrag.connect(f);
     }
 
-    bool In(const Point &p)
+    bool In(const common::Point &p)
     {
-        return m_frame.In(p);
+        return GetFrame().In(p);
+    }
+
+    common::Rect GetFrame() override
+    {
+        return m_frame;
     }
 
 protected:
@@ -85,9 +90,9 @@ private:
         }
     }
 
-    boost::signals2::signal<void(const Point &)> m_observerOnMouseDown;
-    boost::signals2::signal<void(const Point &)> m_observerOnMouseUp;
-    boost::signals2::signal<void(const Point &, const Point &)> m_observerOnMouseDrag;
+    boost::signals2::signal<void(const common::Point &)> m_observerOnMouseDown;
+    boost::signals2::signal<void(const common::Point &)> m_observerOnMouseUp;
+    boost::signals2::signal<void(const common::Point &, const common::Point &)> m_observerOnMouseDrag;
 
-    Rect m_frame;
+    common::Rect m_frame;
 };

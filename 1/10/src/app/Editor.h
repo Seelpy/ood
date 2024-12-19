@@ -4,16 +4,20 @@
 #include "./../model/shape/Shape.h"
 #include "./../model/style/fill/FIllStyle.h"
 #include "./../model/style/line//LineStyle.h"
-#include "./../presenter/command/History.h"
-#include <SFML/Graphics.hpp>
-#include "./../model/common/Point.h"
+#include "./../lib/command/History.h"
+#include "./../lib/common/Point.h"
 #include "./../lib/sfml/canvas/Canvas.h"
 #include "./../presenter/draft/Draft.h"
+#include "./../presenter/button/Button.h"
+#include "../presenter/editor/Editor.h"
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <utility>
 
 class Editor
 {
 public:
-    Editor()
+    Editor(IDraftPtr draft): m_draft(std::move(draft))
     {
 
     }
@@ -22,12 +26,10 @@ public:
     {
         InitEditWindow();
     }
-
+// Shapes View
 private:
     void InitEditWindow()
     {
-        m_draft = std::make_shared<Draft>(Size{500, 500});
-        m_draft->AddShape(std::make_shared<Shape>("circle", Rect{{100, 100}, {50, 50}}, std::make_shared<LineStyle>(100, 1), std::make_shared<FillStyle>(100)));
         m_commandsHistory = std::make_shared<History>();
 
         sf::ContextSettings settings;
@@ -39,6 +41,15 @@ private:
 
         auto draftPresent = DraftPresenter({0, 0}, m_draft);
         auto view = draftPresent.GetView();
+
+        auto buttonPresenter1 = std::make_shared<ButtonPresenter>(common::Rect{{0, 950}, {100, 30}}, std::make_shared<FillStyle>(100), std::make_shared<LineStyle>(100, 5), "Ellipse", [](){std:: cout << "Ellipse" << std::endl;});
+        auto buttonPresenter2 = std::make_shared<ButtonPresenter>(common::Rect{{200, 950}, {100, 30}}, std::make_shared<FillStyle>(100), std::make_shared<LineStyle>(100, 5), "Square", [](){std:: cout << "Square" << std::endl;});
+        auto buttonPresenter3 = std::make_shared<ButtonPresenter>(common::Rect{{400, 950}, {100, 30}}, std::make_shared<FillStyle>(100), std::make_shared<LineStyle>(100, 5), "Triangle", [](){std:: cout << "Triangle" << std::endl;});
+        auto menuButtons = {buttonPresenter1, buttonPresenter2, buttonPresenter3};
+        auto menu = std::make_shared<MenuPresenter>(menuButtons);
+
+        auto editorPresenter = EditorPresenter(draftPresent.GetView(), menu->GetView());
+        auto editorView = editorPresenter.GetView();
 
         sf::Clock clock;
         while (renderWindow.isOpen())
@@ -58,9 +69,9 @@ private:
                 if (event->is<sf::Event::MouseButtonPressed>())
                 {
                     auto mouseEvent = event->getIf<sf::Event::MouseButtonPressed>();
-                    Point p = Point{(unsigned int)mouseEvent->position.x, (unsigned int)mouseEvent->position.y};
+                    common::Point p = common::Point{(unsigned int)mouseEvent->position.x, (unsigned int)mouseEvent->position.y};
                     m_pressedMousePoint = p;
-                    view->OnMouseDown(p);
+                    editorView->OnMouseDown(p);
                 }
                 if (event->is<sf::Event::MouseButtonReleased>())
                 {
@@ -69,21 +80,21 @@ private:
                     {
                         auto p1 = m_pressedMousePoint.value();
                         auto pRaw = sf::Mouse::getPosition(renderWindow);
-                        auto p2 = Point{(unsigned int) pRaw.x, (unsigned int )pRaw.y};
-                        view->OnMouseDrag(p1, p2);
+                        auto p2 = common::Point{(unsigned int) pRaw.x, (unsigned int )pRaw.y};
+                        editorView->OnMouseDrag(p1, p2);
                     }
                     m_pressedMousePoint = std::nullopt;
-                    view->OnMouseUp(Point{(unsigned int)mouseEvent->position.x, (unsigned int)mouseEvent->position.y});
+                    editorView->OnMouseUp(common::Point{(unsigned int)mouseEvent->position.x, (unsigned int)mouseEvent->position.y});
 
                 }
             }
             renderWindow.clear(sf::Color::White);
-            view->Show(canvas);
+            editorView->Show(canvas);
             renderWindow.display();
         }
     }
 
-    std::shared_ptr<Draft> m_draft;
+    IDraftPtr m_draft;
     std::shared_ptr<History> m_commandsHistory;
-    std::optional<Point> m_pressedMousePoint;
+    std::optional<common::Point> m_pressedMousePoint;
 };

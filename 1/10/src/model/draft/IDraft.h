@@ -14,7 +14,7 @@ public:
 
     virtual void RemoveShape(size_t index) = 0;
 
-    virtual Size GetSize() = 0;
+    virtual common::Size GetSize() = 0;
 
     virtual void RegisterObserver(const std::function<void()>& observer) = 0;
 };

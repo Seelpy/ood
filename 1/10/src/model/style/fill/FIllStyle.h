@@ -5,16 +5,16 @@
 class FillStyle : public IFillStyle
 {
 public:
-    FillStyle(RGBAColor color)
+    FillStyle(common::RGBAColor color)
     {
         m_color = color;
     }
 
-    RGBAColor GetColor() override
+    common::RGBAColor GetColor() override
     {
         return m_color;
     }
 
 private:
-    RGBAColor m_color;
+    common::RGBAColor m_color;
 };

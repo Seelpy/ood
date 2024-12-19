@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./../../common/Color.h"
+#include "./../../../lib/common/Color.h"
 #include <memory>
 
 class ILineStyle
@@ -8,7 +8,7 @@ class ILineStyle
 public:
     virtual ~ILineStyle() = default;
 
-    virtual RGBAColor GetColor() = 0;
+    virtual common::RGBAColor GetColor() = 0;
 
     virtual unsigned int GetThickness() = 0;
 };

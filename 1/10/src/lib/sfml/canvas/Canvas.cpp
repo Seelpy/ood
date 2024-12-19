@@ -26,36 +26,24 @@ float DotProduct(const sf::Vector2f &first, const sf::Vector2f &second)
 Canvas::Canvas(sf::RenderTarget &target)
         : m_renderTarget(target), m_lineThickness(DEFAULT_CANVAS_LINE_THICKNESS)
 {
+    if (!m_font.openFromFile("/Users/maksimveselov/Projects/ood/1/10/src/lib/sfml/font/Roboto-Regular.ttf"))
+    {
+        throw std::invalid_argument("Unable to load specified font");
+    }
 }
 
-void Canvas::DrawLine(const Point &from, const Point &to)
+void Canvas::DrawLine(const common::Point &from, const common::Point &to)
 {
-    auto distanceX = to.X() - from.X();
-    auto distanceY = to.Y() - from.Y();
-    auto angle = atan2(distanceY, distanceX);
-
-    auto cosAngle = cos(angle);
-    auto width = (distanceX != 0)
-                 ? distanceX / cosAngle
-                 : distanceY;
-
-    sf::RectangleShape line(sf::Vector2f((float)std::abs(width),(float)
-    m_lineThickness));
-    line.setPosition({(float) from.X(), (float) from.Y()});
-    line.setFillColor(m_fillColor);
-
-    sf::Angle angleDeg = sf::radians(angle * 180 / M_PI);
-    if (angle <= M_PI_2)
-    {
-        line.setOrigin({0, (float) m_lineThickness});
-
-    }
-    line.rotate(angleDeg);
+    sf::VertexArray line(sf::PrimitiveType::Lines, 2);
+    line[0].position = sf::Vector2f(static_cast<float>(from.X()), static_cast<float>(from.Y()));
+    line[1].position = sf::Vector2f(static_cast<float>(to.X()), static_cast<float>(to.Y()));
+    line[0].color = sf::Color(m_fillColor);
+    line[1].color = sf::Color(m_fillColor);
 
     m_renderTarget.draw(line);
 }
 
-void Canvas::DrawClosedPolyLine(const std::vector<Point> &points)
+void Canvas::DrawClosedPolyLine(const std::vector<common::Point> &points)
 {
     auto pointCount = points.size();
 
@@ -71,7 +59,7 @@ void Canvas::DrawClosedPolyLine(const std::vector<Point> &points)
 
 }
 
-void Canvas::DrawClosedPolyLineSegment(size_t index, const std::vector<Point> &points)
+void Canvas::DrawClosedPolyLineSegment(size_t index, const std::vector<common::Point> &points)
 {
     auto pointCount = points.size();
     if (pointCount <= index)
@@ -116,7 +104,7 @@ void Canvas::DrawClosedPolyLineSegment(size_t index, const std::vector<Point> &p
     m_renderTarget.draw(polyLineSegment);
 }
 
-void Canvas::DrawEllipse(Rect frame)
+void Canvas::DrawEllipse(common::Rect frame)
 {
     auto ellipse = sf::CircleShape((float) frame.GetSize().GetWidth() / 2, CIRCLE_SHAPE_POINT_COUNT);
 
@@ -131,12 +119,12 @@ void Canvas::DrawEllipse(Rect frame)
     m_renderTarget.draw(ellipse);
 }
 
-void Canvas::FillEllipse(Rect frame)
+void Canvas::FillEllipse(common::Rect frame)
 {
     auto ellipse = sf::CircleShape((float) frame.GetSize().GetWidth() / 2, CIRCLE_SHAPE_POINT_COUNT);
 
     ellipse.setPosition({(float) frame.LeftTop().X(), (float) frame.LeftTop().Y()});
-    ellipse.setScale({1, (float) (frame.GetSize().GetHeight() / frame.GetSize().GetWidth())});
+    ellipse.setScale({1,  ((float) frame.GetSize().GetHeight() / frame.GetSize().GetWidth())});
 
     ellipse.setOutlineThickness(1);
     ellipse.setFillColor(m_fillColor);
@@ -144,7 +132,7 @@ void Canvas::FillEllipse(Rect frame)
     m_renderTarget.draw(ellipse);
 }
 
-void Canvas::FillPolygon(const std::vector<Point> &points)
+void Canvas::FillPolygon(const std::vector<common::Point> &points)
 {
     sf::ConvexShape convex;
 
@@ -153,7 +141,7 @@ void Canvas::FillPolygon(const std::vector<Point> &points)
 
     for (size_t index = 0; index < pointCount; ++index)
     {
-        Point point = points[index];
+        common::Point point = points[index];
         convex.setPoint(index, sf::Vector2f((float) point.X(), (float) point.Y()));
     }
 
@@ -177,17 +165,12 @@ void Canvas::SetLineThickness(unsigned int thickness)
     m_lineThickness = thickness;
 }
 
-void Canvas::DrawText(const std::string &string, const Point &position)
+void Canvas::DrawText(const std::string &string, const common::Point &position)
 {
-    sf::Font font;
-    if (!font.openFromFile("Fonts/Roboto-Regular.ttf"))
-    {
-        throw std::invalid_argument("Unable to load specified font");
-    }
-    sf::Text text(font);
-    text.setFont(font);
+    sf::Text text(m_font);
+    text.setFont(m_font);
     text.setString(string);
-    text.setCharacterSize(18);
+    text.setCharacterSize(16);
     text.setFillColor(sf::Color::Black);
     text.setPosition({(float)position.X(), (float)position.Y()});
 

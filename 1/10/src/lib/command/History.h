@@ -5,6 +5,8 @@
 #include "IExecuter.h"
 #include "IHistory.h"
 
+// TODO: перенести в lib
+
 class History: public IExecuter, public IHistory
 {
 public:

@@ -7,7 +7,7 @@
 class Draft : public IDraft
 {
 public:
-    Draft(const Size &size) : m_size(size)
+    Draft(const common::Size &size) : m_size(size)
     {
     }
 
@@ -32,7 +32,7 @@ public:
         Notify();
     }
 
-    Size GetSize() override
+    common::Size GetSize() override
     {
         return m_size;
     }
@@ -48,7 +48,7 @@ private:
         m_observer();
     }
 
-    Size m_size;
+    common::Size m_size;
     std::vector<IShapePtr> m_shapes;
     boost::signals2::signal<void()> m_observer;
 };

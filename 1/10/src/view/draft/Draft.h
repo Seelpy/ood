@@ -8,7 +8,7 @@
 class DraftView : public BaseView
 {
 public:
-    DraftView(Rect frame, std::vector<IViewPtr> shapes) : m_shapes(std::move(shapes)), m_frame(frame), BaseView(frame)
+    DraftView(common::Rect frame, std::vector<IViewPtr> shapes) : m_shapes(std::move(shapes)), m_frame(frame), BaseView(frame)
     {
 
     }
@@ -30,5 +30,5 @@ protected:
 
 private:
     std::vector<IViewPtr> m_shapes;
-    Rect m_frame;
+    common::Rect m_frame;
 };

@@ -9,7 +9,7 @@
 class DraftPresenter : public BasePresenter
 {
 public:
-    DraftPresenter(Point position, const IDraftPtr &draft)
+    DraftPresenter(common::Point position, const IDraftPtr &draft)
     {
         m_shapes.reserve(draft->ListShapes().size());
         for (const auto &shape: draft->ListShapes())
@@ -22,7 +22,7 @@ public:
         {
             shapeViews.push_back(shape->GetView());
         }
-        m_draft = std::make_shared<DraftView>(Rect{position, draft->GetSize()}, shapeViews);
+        m_draft = std::make_shared<DraftView>(common::Rect{position, draft->GetSize()}, shapeViews);
         draft->RegisterObserver(
                 [=, *this]() {
                     // TODO: add listen

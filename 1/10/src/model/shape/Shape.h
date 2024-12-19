@@ -4,12 +4,14 @@
 #include <boost/signals2.hpp>
 #include "IShape.h"
 
+// TODO: активная или пассивная
+
 class Shape : public IShape
 {
 public:
     Shape(
             const ShapeType& type,
-            const Rect &frame,
+            const common::Rect &frame,
             ILineStylePtr lineStyle,
             IFillStylePtr fillStyle
     ) : m_frame(frame),
@@ -24,12 +26,12 @@ public:
         return m_type;
     }
 
-    Rect GetFrame() override
+    common::Rect GetFrame() override
     {
         return m_frame;
     }
 
-    void SetFrame(Rect frame) override
+    void SetFrame(common::Rect frame) override
     {
         m_frame = frame;
         Notify();
@@ -57,6 +59,7 @@ public:
         Notify();
     }
 
+    // TODO: Отдвать коннекшен чтобы прекратить коннекшен
     void RegisterObserver(const std::function<void()>& observer) override
     {
         m_observer.connect(observer);
@@ -69,7 +72,7 @@ private:
     }
 
     ShapeType m_type;
-    Rect m_frame;
+    common::Rect m_frame;
     ILineStylePtr m_lineStyle;
     IFillStylePtr m_fillStyle;
     boost::signals2::signal<void()> m_observer;

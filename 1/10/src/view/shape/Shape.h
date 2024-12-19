@@ -9,7 +9,7 @@ class ShapeView : public BaseView
 {
 public:
     ShapeView(
-            IShapeViewStrategyPtr strategy, Rect frame, RGBAColor fillColor, RGBAColor lineColor,
+            IShapeViewStrategyPtr strategy, common::Rect frame, common::RGBAColor fillColor, common::RGBAColor lineColor,
             unsigned int thickness)
             : m_strategy(std::move(strategy)), m_frame(frame), BaseView(frame)
     {
@@ -25,17 +25,17 @@ public:
         m_strategy->Show(canvas, m_frame, m_fillColor, m_lineColor, m_thickness);
     }
 
-    void SetFrame(const Rect &frame)
+    void SetFrame(const common::Rect &frame)
     {
         m_frame = frame;
     }
 
-    void SetFillColor(const RGBAColor &fillColor)
+    void SetFillColor(const common::RGBAColor &fillColor)
     {
         m_fillColor = fillColor;
     }
 
-    void SetLineColor(const RGBAColor &lineColor)
+    void SetLineColor(const common::RGBAColor &lineColor)
     {
         m_lineColor = lineColor;
     }
@@ -47,8 +47,8 @@ public:
 
 private:
     IShapeViewStrategyPtr m_strategy;
-    Rect m_frame;
-    RGBAColor m_fillColor;
-    RGBAColor m_lineColor;
+    common::Rect m_frame;
+    common::RGBAColor m_fillColor;
+    common::RGBAColor m_lineColor;
     unsigned int m_thickness;
 };

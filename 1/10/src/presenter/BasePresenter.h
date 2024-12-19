@@ -22,23 +22,23 @@ protected:
         view->RegisterObserverOnMouseDrag(m_f3);
     }
 
-    virtual void HandleMouseDownImpl(const Point & p)
+    virtual void HandleMouseDownImpl(const common::Point & p)
     {
         std::cout << "Down: " << p.X() << " " << p.Y() << std::endl;
     }
 
-    virtual void HandleMouseUpImpl(const Point & p)
+    virtual void HandleMouseUpImpl(const common::Point & p)
     {
         std::cout << "Up: " << p.X() << " " << p.Y() << std::endl;
     }
 
-    virtual void HandleMouseDragImpl(const Point & p1, const Point & p2)
+    virtual void HandleMouseDragImpl(const common::Point & p1, const common::Point & p2)
     {
         std::cout << "Mouse: " << p1.X() << " " << p1.Y() << " | " << p2.X() << " " << p2.Y()  << std::endl;
     }
 
 private:
-    std::function<void(const Point &, const Point &)> m_f3 = [this](const Point &p1, const Point &p2) { HandleMouseDragImpl(p1, p2); };
-    std::function<void(const Point &)> m_f2 = [this](const Point &p) { HandleMouseUpImpl(p); };
-    std::function<void(const Point &)> m_f1 = [this](const Point &p) { HandleMouseDownImpl(p); };
+    std::function<void(const common::Point &, const common::Point &)> m_f3 = [this](const common::Point &p1, const common::Point &p2) { HandleMouseDragImpl(p1, p2); };
+    std::function<void(const common::Point &)> m_f2 = [this](const common::Point &p) { HandleMouseUpImpl(p); };
+    std::function<void(const common::Point &)> m_f1 = [this](const common::Point &p) { HandleMouseDownImpl(p); };
 };

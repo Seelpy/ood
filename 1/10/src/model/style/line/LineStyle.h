@@ -5,13 +5,13 @@
 class LineStyle : public ILineStyle
 {
 public:
-    LineStyle(RGBAColor color, unsigned int thickness)
+    LineStyle(common::RGBAColor color, unsigned int thickness)
     {
         m_color = color;
         m_thickness = thickness;
     }
 
-    RGBAColor GetColor() override
+    common::RGBAColor GetColor() override
     {
         return m_color;
     }
@@ -22,6 +22,6 @@ public:
     }
 
 private:
-    RGBAColor m_color;
+    common::RGBAColor m_color;
     unsigned int m_thickness;
 };
